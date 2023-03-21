@@ -219,6 +219,8 @@ if (!function_exists('taskbot_payment_complete')) {
 								update_post_meta( $order_id, 'seller_id', $current_user->ID );
 							} else if( !empty($user_type) && $user_type === 'buyers' ) {
 								update_post_meta( $order_id, 'buyer_id', $current_user->ID );
+							} else if( !empty($user_type) && $user_type === 'auditors' ) {
+								update_post_meta( $order_id, 'auditor_id', $current_user->ID );
 							}
 
 						} else if( !empty($order_detail['payment_type']) && $order_detail['payment_type'] == 'tasks' && !empty($order_detail['offers_id']) ){
@@ -227,6 +229,8 @@ if (!function_exists('taskbot_payment_complete')) {
 								update_post_meta( $order_id, 'seller_id', $current_user->ID );
 							} else if( !empty($user_type) && $user_type === 'buyers' ) {
 								update_post_meta( $order_id, 'buyer_id', $current_user->ID );
+							} else if( !empty($user_type) && $user_type === 'auditors' ) {
+								update_post_meta( $order_id, 'auditor_id', $current_user->ID );
 							}
 						} else if( !empty($order_detail['payment_type']) && $order_detail['payment_type'] == 'package' ){
 							taskbot_update_packages_data( $order_id,$order_detail,$user);
@@ -261,7 +265,7 @@ if (!function_exists('taskbot_update_wallet_data')) {
 		$buyer_amount	= get_user_meta( $user_id, '_buyer_balance',true );
 		$buyer_amount	= !empty($buyer_amount) ? ($buyer_amount+$price) : $price;
 		update_user_meta( $user_id,'_buyer_balance',$buyer_amount );
-		update_post_meta( $order_id,'_buyer_balance',$buyer_amount );
+		update_post_meta( $order_id,'_buyer_ba  lance',$buyer_amount );
 		update_post_meta( $order_id,'_order_balance',$price );
     	update_post_meta( $order_id,'buyer_id',$user_id );
 

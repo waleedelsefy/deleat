@@ -314,13 +314,13 @@ if (!function_exists('taskbot_migration_auditor_packages')) {
 
     function taskbot_migration_auditor_packages() {
 		global $woocommerce, $taskbot_settings;
-		$arg_freeauditors    = array(
+        $arg_freelancers    = array(
             'fields'            => 'ids',
             'post_type'         => array('auditors'),
             'post_status'       => 'any',
             'numberposts'       => -1
         );
-        $freeauditors    	= get_posts($arg_freeauditors);
+        $freeauditors    	= get_posts($arg_freelancers);
 		$args3 = array(
 			'hide_empty'	=> false,
 			'taxonomy' 		=> 'skills',
@@ -341,8 +341,8 @@ if (!function_exists('taskbot_migration_auditor_packages')) {
 			$languages_term[$lang->term_id]	= !empty($lang->term_id) ? $lang->term_id : 0;
 		}
 
-        if( !empty($freeauditors) ){
-            foreach($freeauditors as $freeauditor){
+        if( !empty($freelancers) ){
+            foreach($freelancers as $freelancer){
 				// $post_author	= get_post_field( 'post_author', $freeauditor );
 				// $post_author	= !empty($post_author) ? intval($post_author) : 0;
 
@@ -351,10 +351,10 @@ if (!function_exists('taskbot_migration_auditor_packages')) {
 
 				// taskbot_update_packages_data(1406,$order_details,$post_author);
 				$skilllevel			= array_rand($skills_term,7);
-				wp_set_object_terms( $freeauditor, $skilllevel, 'skills' );
+				wp_set_object_terms( $freelancer, $skilllevel, 'skills' );
 
 				$languagelevel			= array_rand($languages_term,3);
-				wp_set_object_terms( $freeauditor, $languagelevel, 'languages' );
+				wp_set_object_terms( $freelancer, $languagelevel, 'languages' );
 			}
 		}
 	}

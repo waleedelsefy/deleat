@@ -669,6 +669,33 @@ if (class_exists('WC_Product') && !function_exists('register_buyer_packages_prod
 }
 
 /**
+ * Register auditor packages product type
+ *
+ * @throws error
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
+ * @return
+ */
+if (class_exists('WC_Product') && !function_exists('register_auditor_packages_product_type')) {
+    function register_auditor_packages_product_type()
+    {
+        class WC_Product_Auditor_Packages extends WC_Product
+        {
+            public function __construct($product)
+            {
+                $this->product_type = 'auditor_packages';
+                parent::__construct($product);
+            }
+
+            public function get_type()
+            {
+                return 'auditor_packages';
+            }
+        }
+    }
+    add_action('init', 'register_auditor_packages_product_type');
+}
+
+/**
  * Register projects product type
  *
  * @throws error

@@ -68,7 +68,13 @@ class Taskbot_Admin_Products_Data_Product_Tabs {
 				'target'	=> 'taskbot_buyer_package_product_data',
 				'class'		=> array('show_if_buyer_packages'),
 				'priority'	=> 40,
-			),					
+			),
+            'auditor_package_fields'	=> array(
+				'label'		=> esc_html__( 'Auditor package fields', 'taskbot' ),
+				'target'	=> 'taskbot_auditor_package_product_data',
+				'class'		=> array('show_if_auditor_packages'),
+				'priority'	=> 40,
+			),
 
 		);
 
@@ -140,6 +146,8 @@ class Taskbot_Admin_Products_Data_Product_Tabs {
 			$classname = 'WC_Product_Packages';
 		} elseif ( $product_type == 'buyer_packages' ) {
 			$classname = 'WC_Product_Buyer_Packages';
+		}  elseif ( $product_type == 'auditor_packages' ) {
+			$classname = 'WC_Product_Auditor_Packages';
 		} elseif ( $product_type == 'funds' ) {
 			$classname = 'WC_Product_Funds';
 		}
@@ -174,7 +182,10 @@ class Taskbot_Admin_Products_Data_Product_Tabs {
 		</div>		
 		<div id="taskbot_buyer_package_product_data" class="panel woocommerce_options_panel">
 			<?php include __DIR__.'/templates/product-data-buyer-package.php'; ?>
-		</div>		
+		</div>
+        <div id="taskbot_auditor_package_product_data" class="panel woocommerce_options_panel">
+			<?php include __DIR__.'/templates/product-data-auditor-package.php'; ?>
+		</div>
 		<?php	
 	}
 

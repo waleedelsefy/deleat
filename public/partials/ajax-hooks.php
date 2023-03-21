@@ -1648,7 +1648,7 @@ if (!function_exists('taskbot_package_checkout')) {
         $json['message']           = esc_html__('Package','taskbot');
         if (!empty($current_user->ID)){
             $get_user_type	= apply_filters('taskbot_get_user_type', $current_user->ID );
-            if (!empty($get_user_type) && ($get_user_type == 'sellers' || $get_user_type == 'buyers')){
+            if (!empty($get_user_type) && ($get_user_type == 'sellers' || $get_user_type == 'buyers'|| $get_user_type == 'auditors')){
                 $seller_profile_id  = taskbot_get_linked_profile_id($current_user->ID);
                 do_action('taskbot_check_user_account_status', $seller_profile_id); //check if user is not blocked or deactive
             } else {

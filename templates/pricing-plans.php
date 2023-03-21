@@ -18,7 +18,7 @@ get_header();
 	<div class="container">
 		<div class="tb-pricingholder">			
 			<?php 
-				if(!empty($user_type) && in_array($user_type, array('buyers','sellers'))){
+				if(!empty($user_type) && in_array($user_type, array('buyers','sellers','auditors'))){
 					do_action('taskbot_packages_listing');
 				} else { 
 					do_action( 'taskbot_notification', esc_html__('Restricted access','taskbot'), esc_html__('Oops! you are not allowed to access this page','taskbot') );

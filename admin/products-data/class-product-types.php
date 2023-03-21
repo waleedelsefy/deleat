@@ -31,7 +31,7 @@ class Taskbot_Admin_Products_Data_Product_Types {
 		$product_types[ 'subtasks' ]	= apply_filters('taskbot_product_type_subtask_title', esc_html__('Sub task listing', 'taskbot'));
 		$product_types[ 'packages' ]	= apply_filters('taskbot_product_type_package_title', esc_html__('Owner packages', 'taskbot'));
 		$product_types[ 'buyer_packages' ]	= apply_filters('taskbot_product_type_package_title', esc_html__('Buyer packages', 'taskbot'));
-		$product_types[ 'auditor_packages' ]	= apply_filters('taskbot_product_type_package_title', esc_html__('Auditors packages', 'taskbot'));
+		$product_types[ 'auditor_packages' ]= apply_filters('taskbot_product_type_package_title', esc_html__('Auditors packages', 'taskbot'));
 		$product_types[ 'funds' ]		= apply_filters('taskbot_product_type_funds_title', esc_html__('Funds', 'taskbot'));
 		$product_types[ 'projects' ]	= apply_filters('taskbot_product_type_projects_title', esc_html__('Projects', 'taskbot'));
 		return $product_types;

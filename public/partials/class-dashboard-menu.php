@@ -308,7 +308,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 					'icon'		=> 'icon-external-link',
 					'data-attr'		=> array('target'=> '_blank'),
 					'ref'		=> 'profile',
-					'mode'		=> 'public',
+					'mode'		=> 'profile',
 					'sortorder'	=> 0,
 				),
 				'dashboard'	=> array(
@@ -369,22 +369,25 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 			);
 
 			$package_option			= !empty($taskbot_settings['package_option']) && in_array($taskbot_settings['package_option'],array('paid','buyer_free')) ? true : false;
-			$buyer_package_option	= !empty($taskbot_settings['package_option']) && in_array($taskbot_settings['package_option'],array('paid','seller_free'||'auditor_free')) ? true : false;
+			$buyer_package_option	= !empty($taskbot_settings['package_option']) && in_array($taskbot_settings['package_option'],array('paid','seller_free')) ? true : false;
+			$auditor_package_option	= !empty($taskbot_settings['package_option']) && in_array($taskbot_settings['package_option'],array('paid','auditor_free')) ? true : false;
 			$identity_verification	= !empty($taskbot_settings['identity_verification']) ? $taskbot_settings['identity_verification'] : false;
 			$switch_user    		= !empty($taskbot_settings['switch_user']) ? $taskbot_settings['switch_user'] : false;
 
-			if( !empty($package_option) && !empty($user_type) && $user_type !== 'buyers'){
-				$taskbot_menu_list['packages']	= array(
-					'title' 	=> esc_html__('Packages', 'taskbot'),
-					'class'		=> 'tb-earnings',
-					'icon'		=> 'icon-package',
-					'ref'		=> 'packages',
-					'mode'		=> '',
-					'sortorder'	=> 3,
 
-				);
+
+			if( !empty($buyer_package_option) && !empty($user_type) && $user_type === 'buyers' ){
+                $taskbot_menu_list['packages']	= array(
+                    'title' 	=> esc_html__('Packages', 'taskbot'),
+                    'class'		=> 'tb-earnings',
+                    'icon'		=> 'icon-package',
+                    'ref'		=> 'packages',
+                    'mode'		=> '',
+                    'sortorder'	=> 3,
+                    'type'		=> 'buyers',
+                );
 			}
-			if( !empty($package_option) && !empty($user_type) && $user_type === 'auditor'){
+	    	if( !empty($auditor_package_option) && !empty($user_type) && $user_type === 'auditors' ){
 				$taskbot_menu_list['packages']	= array(
 					'title' 	=> esc_html__('Packages', 'taskbot'),
 					'class'		=> 'tb-earnings',
@@ -393,18 +396,6 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 					'mode'		=> '',
 					'sortorder'	=> 3,
 					'type'		=> 'auditors',
-				);
-			}
-
-			if( !empty($buyer_package_option) && !empty($user_type) && $user_type === 'buyers' ){
-				$taskbot_menu_list['packages']	= array(
-					'title' 	=> esc_html__('Packages', 'taskbot'),
-					'class'		=> 'tb-earnings',
-					'icon'		=> 'icon-package',
-					'ref'		=> 'packages',
-					'mode'		=> '',
-					'sortorder'	=> 3,
-					'type'		=> 'buyers',
 				);
 			}
 
