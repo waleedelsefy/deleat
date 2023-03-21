@@ -24,7 +24,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          */
         public static function getInstance(){
             if (self::$instance==null){
@@ -38,7 +38,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          */
         public static function uploadFile($submitted_file){
             $response   = array();
@@ -94,7 +94,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          */
         public static function getEncryptFile($file, $post_id, $is_upload=false, $encrypt_file=true){
             $result     = array();
@@ -143,7 +143,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          */
         public static function getDecrpytFile($file){
             $result              = array();
@@ -188,7 +188,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public static function downloadFile($attachmentId){
             $post_id    = !empty($attachmentId) ? get_post_field('post_parent',$attachmentId,true) : '';
@@ -268,7 +268,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public static function downloadZipFile($post_id,$type,$meta){
             $json = array();
@@ -349,7 +349,7 @@ if (!class_exists('Taskbot_file_permission')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public static function modifyUploadedFile($attachment_id, $parent_post_id){
            

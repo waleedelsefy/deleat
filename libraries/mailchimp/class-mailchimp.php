@@ -14,7 +14,7 @@ if (!class_exists('Taskbot_MailChimp')) {
          * Update mailchimp array
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_mailchimp_array(){

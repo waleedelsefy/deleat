@@ -145,9 +145,7 @@ class Taskbot_Admin_CPT_Auditor {
         register_taxonomy('tb_auditor_type', array('auditors'), $auditor_type_args);
     }
 
-    /*
-     * English Level
-     */
+
     public function taskbot_auditor_english_level_taxonomy_register(){
         $english_level_labels = array(
             'name' 				=> esc_html__('English level', 'taskbot'),

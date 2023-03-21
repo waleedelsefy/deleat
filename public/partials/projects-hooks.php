@@ -38,7 +38,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Remove project
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_remove_project()
@@ -59,7 +59,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project featured
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_project_featured()
@@ -80,7 +80,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project hiring
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_project_hiring()
@@ -105,7 +105,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project invitation
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_project_invitation()
@@ -127,7 +127,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Save project
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_save_project()
@@ -151,7 +151,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project sidebar
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_country_dropdown_html($selected_country = '', $name = 'country')
@@ -184,7 +184,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project sidebar
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_project_sidebar($step_id = '', $post_id = '')
@@ -233,7 +233,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Tasks user ratings
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return
          */
         public function taskbot_freelancer_invitation($project_id = 0, $profile_id = 0)
@@ -247,7 +247,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
         ?>
             <div class="tk-bidbtn">
                 <a href="<?php echo esc_url(get_permalink($profile_id)); ?>"><?php esc_html_e('View profile', 'taskbot'); ?></a>
-                <span class="tb-btn-bit <?php echo esc_attr($bid_class); ?>" data-profile_id="<?php echo intval($profile_id); ?>" data-project_id="<?php echo intval($project_id); ?>"><?php echo esc_html($bid_text); ?></a>
+                <a class="tb-btn-bit <?php echo esc_attr($bid_class); ?>" data-profile_id="<?php echo intval($profile_id); ?>" data-project_id="<?php echo intval($project_id); ?>"><?php echo esc_html($bid_text); ?></a>
             </div>
         <?php
             echo ob_get_clean();
@@ -256,7 +256,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
          * Project sidebar
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_custom_taxonomy_dropdown($term_arg = array(), $post_id = '')
@@ -292,7 +292,7 @@ if (!class_exists('TaskbotProjectFunctions')) {
  * List project steps
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbot_list_project_steps')) {
@@ -321,7 +321,7 @@ if (!function_exists('taskbot_list_project_steps')) {
  * List project type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbot_project_type')) {
@@ -347,7 +347,7 @@ if (!function_exists('taskbot_project_type')) {
  * List project location type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbot_project_location_type')) {
@@ -372,7 +372,7 @@ if (!function_exists('taskbot_project_location_type')) {
  * List project type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbot_project_recomended_freelancers')) {
@@ -391,7 +391,7 @@ if (!function_exists('taskbot_project_recomended_freelancers')) {
  * List project type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbotProjectValidations')) {
@@ -1349,7 +1349,7 @@ if (!function_exists('taskbotSaveProjectData')) {
  * Duplicate project
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbotDuplicateProject')) {
@@ -1436,7 +1436,7 @@ if (!function_exists('taskbotDuplicateProject')) {
  * Price calcuation
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbotPriceCalcuation')) {
@@ -1889,7 +1889,7 @@ if (!function_exists('taskbot_project_seller_basic')) {
  * List project filter status
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_projects_status_filter')) {
@@ -1926,7 +1926,7 @@ if (!function_exists('taskbot_list_projects_status_filter')) {
  * List project filter status
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_proposal_status_filter')) {
@@ -1961,7 +1961,7 @@ if (!function_exists('taskbot_list_proposal_status_filter')) {
  * List saved projects
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_project_saved_item')) {
@@ -1995,7 +1995,7 @@ if (!function_exists('taskbot_project_saved_item')) {
  * Checkout cart project details
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_cart_project_details')) {

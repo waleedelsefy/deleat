@@ -13,7 +13,7 @@ $theme_version 	= wp_get_theme();
 $datefomate_list= apply_filters('taskbot_get_list_date_format', '');
 $user_types     = apply_filters('taskbot_get_user_types','');
 $seller_view    = array('list' => esc_html__('List','taskbot'));
-$auditor_view    = array('list' => esc_html__('List','taskbot'));
+$auditor_view   = array('list' => esc_html__('List','taskbot'));
 $heading_styles = array();
 if(!empty($theme_version->get( 'TextDomain' )) 
 && ( $theme_version->get( 'TextDomain' ) === 'taskup' || $theme_version->get( 'TextDomain' ) === 'taskup-child' )){

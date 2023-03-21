@@ -18,7 +18,7 @@
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_task_create_allowed')) {
@@ -73,7 +73,7 @@ if (!function_exists('taskbot_task_create_allowed')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_get_package')) {
@@ -109,7 +109,7 @@ if (!function_exists('taskbot_get_package')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_get_user_tasks')) {
@@ -155,7 +155,7 @@ if (!function_exists('taskbot_get_user_tasks')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_get_user_projects')) {
@@ -202,7 +202,7 @@ if (!function_exists('taskbot_get_user_projects')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_get_template')) {
@@ -230,7 +230,7 @@ if (!function_exists('taskbot_get_template')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_locate_template')) {
     function taskbot_locate_template($template_name, $template_path = 'taskbot', $default_path = '')
@@ -255,7 +255,7 @@ if (!function_exists('taskbot_locate_template')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_template_part')) {
     function taskbot_get_template_part($slug, $name = '', $args = '', $template_path = 'taskbot', $default_path = '')
@@ -279,7 +279,7 @@ if (!function_exists('taskbot_get_template_part')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_paginate')) {
     function taskbot_paginate($taskbot_query = '', $class = '')
@@ -328,7 +328,7 @@ if (!function_exists('taskbot_paginate')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_order_ids_by_product')) {
     function taskbot_get_order_ids_by_product($product_id, $orders_status = array())
@@ -364,7 +364,7 @@ if (!function_exists('taskbot_get_order_ids_by_product')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_page_template_url')) {
     function taskbot_get_page_template_url($template_name)
@@ -388,7 +388,7 @@ if (!function_exists('taskbot_get_page_template_url')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_verify_token')) {
     function taskbot_verify_token($tb_check_security)
@@ -408,7 +408,7 @@ if (!function_exists('taskbot_verify_token')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_verify_admin_token')) {
     function taskbot_verify_admin_token($tb_check_security)
@@ -428,7 +428,7 @@ if (!function_exists('taskbot_verify_admin_token')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_verify_post_author')) {
     function taskbot_verify_post_author($post_id)
@@ -451,7 +451,7 @@ if (!function_exists('taskbot_verify_post_author')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_authenticate_user_validation')) {
     function taskbot_authenticate_user_validation($user_id, $validate_user = '')
@@ -503,7 +503,7 @@ if (!function_exists('taskbot_strong_password_validation')) {
  * Get account settings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_get_account_settings')) {
@@ -529,7 +529,7 @@ if (!function_exists('taskbot_get_account_settings')) {
  * Register task product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_tasks_product_type')) {
@@ -591,7 +591,7 @@ if (class_exists('WC_Product') && !function_exists('register_tasks_product_type'
  * Register sub task product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_subtasks_product_type')) {
@@ -618,7 +618,7 @@ if (class_exists('WC_Product') && !function_exists('register_subtasks_product_ty
  * Register packages product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_packages_product_type')) {
@@ -645,7 +645,7 @@ if (class_exists('WC_Product') && !function_exists('register_packages_product_ty
  * Register buyer packages product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_buyer_packages_product_type')) {
@@ -672,7 +672,7 @@ if (class_exists('WC_Product') && !function_exists('register_buyer_packages_prod
  * Register projects product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_projects_product_type')) {
@@ -699,7 +699,7 @@ if (class_exists('WC_Product') && !function_exists('register_projects_product_ty
  * Register funds product type
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WC_Product') && !function_exists('register_funds_product_type')) {
@@ -726,7 +726,7 @@ if (class_exists('WC_Product') && !function_exists('register_funds_product_type'
  * User verification check
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_get_username')) {
@@ -752,7 +752,7 @@ if (!function_exists('taskbot_get_username')) {
  * price format
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_price_format')) {
@@ -784,7 +784,7 @@ if (!function_exists('taskbot_price_format')) {
  * Get woocommmerce currency settings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_get_current_currency')) {
@@ -848,7 +848,7 @@ if (!function_exists('taskbot_unique_increment')) {
  * List date format
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_tasks_status')) {
@@ -879,7 +879,7 @@ if (!function_exists('taskbot_list_tasks_status')) {
  * List date format
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_tasks_order_status_filter')) {
@@ -901,7 +901,7 @@ if (!function_exists('taskbot_list_tasks_order_status_filter')) {
  * List date format
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_tasks_status_filter')) {
@@ -929,7 +929,7 @@ if (!function_exists('taskbot_list_tasks_status_filter')) {
  * Date format
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_date_format_fix')) {
@@ -963,7 +963,7 @@ if (!function_exists('taskbot_date_format_fix')) {
  * single profile page
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('tb_profile_single_template')) {
@@ -984,7 +984,7 @@ if (!function_exists('tb_profile_single_template')) {
  * User address
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_user_address')) {
@@ -1062,7 +1062,7 @@ if (!function_exists('taskbot_user_address')) {
  * Canonical
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_canonical')) {
@@ -1080,7 +1080,7 @@ if (!function_exists('taskbot_canonical')) {
  * get total service companies
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_get_post_count_by_meta')) {
@@ -1109,7 +1109,7 @@ if (!function_exists('taskbot_get_post_count_by_meta')) {
  * Task order statuses
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_get_list_date_format')) {
@@ -1133,7 +1133,7 @@ if (!function_exists('taskbot_get_list_date_format')) {
  * Taskbot user registration types
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if (!function_exists('taskbot_get_user_types')) {
@@ -1150,7 +1150,7 @@ if (!function_exists('taskbot_get_user_types')) {
  * Task ratings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_complete_task_ratings')) {
@@ -1159,7 +1159,7 @@ if (!function_exists('taskbot_complete_task_ratings')) {
         $user_details       = get_user_by('ID', $user_id);
         $user_email         = !empty($user_details->user_email) ? $user_details->user_email : '';
         $seller_id          = get_post_meta($order_id, 'seller_id', true);
-        $user_type          = 'buyers'||'auditors';
+        $user_type          = 'auditors';
         $linked_profile     = taskbot_get_linked_profile_id($user_id, '', $user_type);
         $user_profiel_name  = taskbot_get_username($linked_profile);
         $comment_id = wp_insert_comment(array(
@@ -1188,7 +1188,7 @@ if (!function_exists('taskbot_complete_task_ratings')) {
  * Task ratings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_product_rating')) {
@@ -1219,7 +1219,7 @@ if (!function_exists('taskbot_product_rating')) {
  * Task ratings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_seller_rating')) {
@@ -1280,7 +1280,7 @@ if (!function_exists('taskbot_seller_rating')) {
  * Task get user success rate
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_success_rate')) {
@@ -1326,7 +1326,7 @@ if (!function_exists('taskbot_success_rate')) {
  * Order refund price
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_order_price')) {
@@ -1360,7 +1360,7 @@ if (!function_exists('taskbot_order_price')) {
  * Dispute status
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_dispute_status')) {
@@ -1401,7 +1401,7 @@ if (!function_exists('taskbot_dispute_status')) {
  * Insert comment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  * 
  */
@@ -1444,7 +1444,7 @@ if (!function_exists('taskbot_wp_insert_comment')) {
  * Account details
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_account_details')) {
@@ -1483,7 +1483,7 @@ if (!function_exists('taskbot_account_details')) {
  * Account details including withdrawal request(s)
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_account_withdraw_details')) {
@@ -1518,7 +1518,7 @@ if (!function_exists('taskbot_account_withdraw_details')) {
  * Account details withdrawal listing
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_account_withdraw_listing')) {
@@ -1567,7 +1567,7 @@ if (!function_exists('taskbot_account_withdraw_listing')) {
  * Tasks status list
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_tasks_status_list')) {
@@ -1588,7 +1588,7 @@ if (!function_exists('taskbot_tasks_status_list')) {
  * Tasks status list
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_project_status_list')) {
@@ -1611,7 +1611,7 @@ if (!function_exists('taskbot_project_status_list')) {
  * Tasks complete order
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_complete_order')) {
@@ -1632,7 +1632,7 @@ if (!function_exists('taskbot_complete_order')) {
  * Project dispute messages
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_project_dispute_messages')) {
@@ -1783,7 +1783,7 @@ if (!function_exists('taskbot_project_dispute_messages')) {
  * Tasks completed count
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_complete_task_count')) {
@@ -1819,7 +1819,7 @@ if (!function_exists('taskbot_complete_task_count')) {
  * Typography and dynamic styles
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -1847,7 +1847,7 @@ if (!function_exists('taskbot_add_dynamic_styles')) {
  * RTL
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_splide_rtl_check')) {

@@ -30,7 +30,7 @@ if (!class_exists('Taskbot_Service_Plans')){
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          */
         public static function getInstance(){
 

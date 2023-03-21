@@ -37,7 +37,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Add milestone
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_add_milestone(){
@@ -59,7 +59,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Project dispute reply
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_submit_project_dispute_reply() {
@@ -108,7 +108,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Create dispute
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return
          */
 
@@ -150,7 +150,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Complete proposal
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_complete_project_order(){
@@ -169,7 +169,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Update milestone
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_update_milestone(){
@@ -188,7 +188,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Decline proposal
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_project_activities(){
@@ -207,7 +207,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Decline proposal
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_decline_proposal(){
@@ -229,7 +229,7 @@ if (!class_exists('TaskbotProposalFunctions')) {
          * Proposal submition
          *
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
          * @return 
          */
         public function taskbot_submit_proposal(){
@@ -271,66 +271,45 @@ if( !function_exists('taskbotProjectDisputeComments') ){
         );
         
         $comment_id         = taskbot_wp_insert_comment($field, $dispute_id, $user_id, $type);
-        $seller_id	        = get_post_meta( $dispute_id, '_seller_id', true );
         $buyer_id	        = get_post_meta( $dispute_id, '_buyer_id', true );
+        $seller_id	        = get_post_meta( $dispute_id, '_seller_id', true );
         $dispute_order	    = get_post_meta( $dispute_id, '_dispute_order', true );
         $project_id         = get_post_meta( $dispute_id, '_project_id',true );
-        $seller_id          = !empty($seller_id) ? intval($seller_id) : 0;
-        $buyer_id           = !empty($buyer_id) ? intval($buyer_id) : 0;
+        $buyer_id          = !empty($buyer_id) ? intval($buyer_id) : 0;
+        $seller_id           = !empty($seller_id) ? intval($seller_id) : 0;
         $dispute_order      = !empty($dispute_order) ? intval($dispute_order) : 0;
         $project_id         = !empty($project_id) ? intval($project_id) : 0;
 
-        $seller_profile_id  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
-        $buyer_profile_id   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
-        $seller_profile_id  = !empty($seller_profile_id) ? intval($seller_profile_id) : 0;
-        $buyer_profile_id   = !empty($buyer_profile_id) ? intval($buyer_profile_id) : 0;
+        $buyer_profile_id  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
+        $seller_profile_id   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
+        $buyer_profile_id  = !empty($buyer_profile_id) ? intval($buyer_profile_id) : 0;
+        $seller_profile_id   = !empty($seller_profile_id) ? intval($seller_profile_id) : 0;
 
         if( !empty($action_type) && $action_type === 'reply' ){
             $sender_id              = $reciver_id = 0;
             $reciver_profile_id     = $sender_profile_id = 0;
-            if( !empty($get_user_type) && $get_user_type === 'sellers' ){
-                $sender_id              = $seller_id;
-                $sender_profile_id      = $seller_profile_id;
-                $reciver_id             = $buyer_id;
-                $reciver_profile_id     = $buyer_profile_id;
-            } else if( !empty($get_user_type) && $get_user_type === 'buyers' ){
+            if( !empty($get_user_type) && $get_user_type === 'buyers' ){
                 $sender_id              = $buyer_id;
                 $sender_profile_id      = $buyer_profile_id;
                 $reciver_id             = $seller_id;
                 $reciver_profile_id     = $seller_profile_id;
+            } else if( !empty($get_user_type) && $get_user_type === 'sellers' ){
+                $sender_id              = $seller_id;
+                $sender_profile_id      = $seller_profile_id;
+                $reciver_id             = $buyer_id;
+                $reciver_profile_id     = $buyer_profile_id;
             };
             $json['message_desc']   = esc_html__('You have successfully reply on this dispute.','taskbot');
             // Notification to reciver about reply
             if( !empty($get_user_type) && $get_user_type === 'administrator' ){
                 $notifyDetails                      = array();
-                $notifyDetails['seller_id']  	    = $seller_profile_id;
                 $notifyDetails['buyer_id']  	    = $buyer_profile_id;
+                $notifyDetails['seller_id']  	    = $seller_profile_id;
                 $notifyDetails['user_id']  	        = $user_id;
                 $notifyDetails['project_id']  	    = $project_id;
                 $notifyDetails['dispute_id']        = $dispute_id;
                 $notifyDetails['dispute_comment']   = $dispute_comment;
                 $notifyDetails['project_id']        = $project_id;
-
-                $notifyData['receiver_id']		    = $seller_id;
-                $notifyData['linked_profile']	    = $seller_profile_id;
-                $notifyData['user_type']		    = $get_user_type;
-                $notifyData['type']		            = 'project_admin_dispute_comment';
-                $notifyData['post_data']		    = $notifyDetails;
-                do_action('taskbot_notification_message', $notifyData );
-                /* Admin Email to seller on dispute comment */
-                $project_dispute_admin_coment_switch    = !empty($taskbot_settings['project_dispute_admin_comment_switch']) ? $taskbot_settings['project_dispute_admin_comment_switch'] : true;
-                if(class_exists('Taskbot_Email_helper') && !empty($project_dispute_admin_coment_switch)){
-                    $emailData                      = array();
-                    $emailData['user_email']        = get_userdata( $seller_id )->user_email;
-                    $emailData['user_name']         = taskbot_get_username($seller_profile_id);
-                    $emailData['admin_name']        = get_userdata( $current_user->ID )->user_email;
-                    $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'dispute',$dispute_id);
-                    $emailData['dispute_comment']   = $dispute_comment;
-                    if (class_exists('TaskbotProjectDisputes')) {
-                        $email_helper = new TaskbotProjectDisputes();
-                        $email_helper->project_dispute_admin_commnet_to_seller_buyer($emailData);
-                    }
-                }
 
                 $notifyData['receiver_id']		    = $buyer_id;
                 $notifyData['linked_profile']	    = $buyer_profile_id;
@@ -338,7 +317,7 @@ if( !function_exists('taskbotProjectDisputeComments') ){
                 $notifyData['type']		            = 'project_admin_dispute_comment';
                 $notifyData['post_data']		    = $notifyDetails;
                 do_action('taskbot_notification_message', $notifyData );
-                /* Admin email to buyer on dispute comment */
+                /* Admin Email to buyer on dispute comment */
                 $project_dispute_admin_coment_switch    = !empty($taskbot_settings['project_dispute_admin_comment_switch']) ? $taskbot_settings['project_dispute_admin_comment_switch'] : true;
                 if(class_exists('Taskbot_Email_helper') && !empty($project_dispute_admin_coment_switch)){
                     $emailData                      = array();
@@ -349,7 +328,28 @@ if( !function_exists('taskbotProjectDisputeComments') ){
                     $emailData['dispute_comment']   = $dispute_comment;
                     if (class_exists('TaskbotProjectDisputes')) {
                         $email_helper = new TaskbotProjectDisputes();
-                        $email_helper->project_dispute_admin_commnet_to_seller_buyer($emailData);
+                        $email_helper->project_dispute_admin_commnet_to_buyer_seller($emailData);
+                    }
+                }
+
+                $notifyData['receiver_id']		    = $seller_id;
+                $notifyData['linked_profile']	    = $seller_profile_id;
+                $notifyData['user_type']		    = $get_user_type;
+                $notifyData['type']		            = 'project_admin_dispute_comment';
+                $notifyData['post_data']		    = $notifyDetails;
+                do_action('taskbot_notification_message', $notifyData );
+                /* Admin email to seller on dispute comment */
+                $project_dispute_admin_coment_switch    = !empty($taskbot_settings['project_dispute_admin_comment_switch']) ? $taskbot_settings['project_dispute_admin_comment_switch'] : true;
+                if(class_exists('Taskbot_Email_helper') && !empty($project_dispute_admin_coment_switch)){
+                    $emailData                      = array();
+                    $emailData['user_email']        = get_userdata( $seller_id )->user_email;
+                    $emailData['user_name']         = taskbot_get_username($seller_profile_id);
+                    $emailData['admin_name']        = get_userdata( $current_user->ID )->user_email;
+                    $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'dispute',$dispute_id);
+                    $emailData['dispute_comment']   = $dispute_comment;
+                    if (class_exists('TaskbotProjectDisputes')) {
+                        $email_helper = new TaskbotProjectDisputes();
+                        $email_helper->project_dispute_admin_commnet_to_buyer_seller($emailData);
                     }
                 }
 
@@ -405,7 +405,7 @@ if( !function_exists('taskbotProjectDisputeComments') ){
                     }
                     $woocommerce->cart->empty_cart();
                     $wallet_amount              = $total_amount;
-                    $product_id                 = taskbot_buyer_wallet_create();
+                    $product_id                 = taskbot_seller_wallet_create();
                     $cart_meta                  = array();
                     $cart_meta['task_id']     	= $product_id;
                     $cart_meta['wallet_id']     = $product_id;
@@ -422,18 +422,18 @@ if( !function_exists('taskbotProjectDisputeComments') ){
                     $woocommerce->cart->empty_cart();
                     $cart_item_data = apply_filters('taskbot_project_dispute_comment_cart_data',$cart_data);
                     WC()->cart->add_to_cart($product_id, 1, null, null, $cart_item_data);
-                    $new_order_id	= taskbot_place_order($buyer_id,'wallet',$dispute_id);
-                    update_post_meta($new_order_id, '_fund_type', 'seller');
+                    $new_order_id	= taskbot_place_order($seller_id,'wallet',$dispute_id);
+                    update_post_meta($new_order_id, '_fund_type', 'buyer');
                     update_post_meta($new_order_id, '_task_dispute_type', 'project');
                     update_post_meta($new_order_id, '_task_dispute_order', $dispute_order);
 
                     update_post_meta($dispute_id, 'dispute_status', 'resolved');
-                    update_post_meta($dispute_id, 'winning_party', $buyer_id);
-                    update_post_meta($dispute_id, 'resolved_by', 'sellers');
+                    update_post_meta($dispute_id, 'winning_party', $seller_id);
+                    update_post_meta($dispute_id, 'resolved_by', 'buyers');
                     
                 }
             } else {
-                do_action( 'taskbot_after_refund_dispute', $dispute_id,'buyers',$type );
+                do_action( 'taskbot_after_refund_dispute', $dispute_id,'sellers',$type );
             }
             $args   = array(
                 'ID'            => $dispute_id,
@@ -451,30 +451,30 @@ if( !function_exists('taskbotProjectDisputeComments') ){
                 update_post_meta( $dispute_order, '_hired_status',false );
             }
             $json['message_desc']   = esc_html__('You have successfully refunded this dispute.','taskbot');
-            // Notification to buyer for refund
+            // Notification to seller for refund
             $notifyDetails                      = array();
-            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['buyer_id']  	    = $buyer_profile_id;
+            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['project_id']  	    = $project_id;
             $notifyDetails['dispute_id']        = $dispute_id;
             $notifyDetails['project_id']        = $project_id;
-            $notifyData['receiver_id']		    = $buyer_id;
-            $notifyData['linked_profile']	    = $buyer_profile_id;
+            $notifyData['receiver_id']		    = $seller_id;
+            $notifyData['linked_profile']	    = $seller_profile_id;
             $notifyData['user_type']		    = $get_user_type;
             $notifyData['type']		            = 'project_refund_approved';
             $notifyData['post_data']		    = $notifyDetails;
             do_action('taskbot_notification_message', $notifyData );
             /* Email on project refund approved */
-            $project_refund_approve_switch        = !empty($taskbot_settings['refund_project_request_approved_buyer_switch']) ? $taskbot_settings['refund_project_request_approved_buyer_switch'] : true;
+            $project_refund_approve_switch        = !empty($taskbot_settings['refund_project_request_approved_seller_switch']) ? $taskbot_settings['refund_project_request_approved_seller_switch'] : true;
             if(class_exists('Taskbot_Email_helper') && !empty($project_refund_approve_switch)){
                 $emailData                      = array();
-                $emailData['buyer_email']        = get_userdata( $buyer_id )->user_email;
-                $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
-                $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $buyer_id, true, 'dispute',$dispute_id);
+                $emailData['seller_email']        = get_userdata( $seller_id )->user_email;
+                $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
+                $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'dispute',$dispute_id);
                 if (class_exists('TaskbotProjectDisputes')) {
                     $email_helper = new TaskbotProjectDisputes();
-                    $email_helper->project_dispute_refund_approve_by_seller($emailData);
+                    $email_helper->project_dispute_refund_approve_by_buyer($emailData);
                 }
             }
 
@@ -486,30 +486,30 @@ if( !function_exists('taskbotProjectDisputeComments') ){
             );
             wp_update_post($args);
             $json['message_desc']   = esc_html__('You have successfully decline this dispute.','taskbot');
-            // Notification to buyer for decline
+            // Notification to seller for decline
             $notifyDetails                      = array();
-            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['buyer_id']  	    = $buyer_profile_id;
+            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['project_id']  	    = $project_id;
             $notifyDetails['dispute_id']        = $dispute_id;
             $notifyDetails['project_id']        = $project_id;
-            $notifyData['receiver_id']		    = $buyer_id;
-            $notifyData['linked_profile']	    = $buyer_profile_id;
+            $notifyData['receiver_id']		    = $seller_id;
+            $notifyData['linked_profile']	    = $seller_profile_id;
             $notifyData['user_type']		    = $get_user_type;
             $notifyData['type']		            = 'project_refund_decline';
             $notifyData['post_data']		    = $notifyDetails;
             do_action('taskbot_notification_message', $notifyData );
             /* Email on project refund decline */
-            $project_refund_decline_switch        = !empty($taskbot_settings['refund_project_request_decline_buyer_switch']) ? $taskbot_settings['refund_project_request_decline_buyer_switch'] : true;
+            $project_refund_decline_switch        = !empty($taskbot_settings['refund_project_request_decline_seller_switch']) ? $taskbot_settings['refund_project_request_decline_seller_switch'] : true;
             if(class_exists('Taskbot_Email_helper') && !empty($project_refund_decline_switch)){
                 $emailData                      = array();
-                $emailData['buyer_email']        = get_userdata( $buyer_id )->user_email;
-                $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
-                $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $buyer_id, true, 'dispute',$dispute_id);
+                $emailData['seller_email']        = get_userdata( $seller_id )->user_email;
+                $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
+                $emailData['dispute_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'dispute',$dispute_id);
                 if (class_exists('TaskbotProjectDisputes')) {
                     $email_helper = new TaskbotProjectDisputes();
-                    $email_helper->project_dispute_refund_decline_by_seller($emailData);
+                    $email_helper->project_dispute_refund_decline_by_buyer($emailData);
                 }
             }
 
@@ -571,18 +571,18 @@ if( !function_exists('taskbotProjectDispute') ){
             $project_id             = get_post_meta( $proposal_id, 'project_id',true );
             $project_id             = !empty($project_id) ? intval($project_id) : 0;
 
-            $buyer_id               = get_post_field( 'post_author', $project_id );
-            $buyer_id               = !empty($buyer_id) ? intval($buyer_id) : 0;
-
-            $seller_id               = get_post_field( 'post_author', $proposal_id );
+            $seller_id               = get_post_field( 'post_author', $project_id );
             $seller_id               = !empty($seller_id) ? intval($seller_id) : 0;
+
+            $buyer_id               = get_post_field( 'post_author', $proposal_id );
+            $buyer_id               = !empty($buyer_id) ? intval($buyer_id) : 0;
 
             $gmt_time		        = current_time( 'mysql', 1 );
             $user_type              = apply_filters('taskbot_get_user_type', $user_id );
             $linked_profile         = taskbot_get_linked_profile_id($user_id,'',$user_type);
             $username   	        = taskbot_get_username( $linked_profile );
             $dispute_title      	= get_the_title($project_id).' #'. $proposal_id;
-            $post_status            = !empty($user_type) && $user_type === 'sellers' ? 'disputed' : 'publish';
+            $post_status            = !empty($user_type) && $user_type === 'buyers' ? 'disputed' : 'publish';
             $dispute_post  = array(
                 'post_title'    => wp_strip_all_tags( $dispute_title ),
                 'post_status'   => $post_status,
@@ -595,8 +595,8 @@ if( !function_exists('taskbotProjectDispute') ){
             update_post_meta( $dispute_id, '_dispute_type',$post_type );
             update_post_meta( $dispute_id, '_sender_type', $user_type);
             update_post_meta( $dispute_id, '_send_by', $user_id);
-            update_post_meta( $dispute_id, '_seller_id', $seller_id);
             update_post_meta( $dispute_id, '_buyer_id', $buyer_id);
+            update_post_meta( $dispute_id, '_seller_id', $seller_id);
             update_post_meta( $dispute_id, '_dispute_key', $dispute_issue);
 
             update_post_meta( $dispute_id, '_dispute_order', $proposal_id);
@@ -658,47 +658,47 @@ if( !function_exists('taskbotProjectDispute') ){
                 'post_status'   => 'disputed'
             );
             wp_update_post( $proposal_post );
-            $buyer_id                           = get_post_field( 'post_author', $project_id );
-            $buyer_profile_id                   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
-            $seller_id                          = get_post_field( 'post_author', $proposal_id );
-            $seller_profile_id                  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+            $seller_id                           = get_post_field( 'post_author', $project_id );
+            $seller_profile_id                   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+            $buyer_id                          = get_post_field( 'post_author', $proposal_id );
+            $buyer_profile_id                  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
             $notifyDetails                      = array();
-            $notifyDetails['buyer_id']  	    = $buyer_profile_id;
             $notifyDetails['seller_id']  	    = $seller_profile_id;
+            $notifyDetails['buyer_id']  	    = $buyer_profile_id;
             $notifyDetails['project_id']  	    = $project_id;
             $notifyDetails['proposal_id']  	    = $proposal_id;
             $notifyDetails['dispute_id']        = $dispute_id;
             $notifyDetails['dispute_order_amount']  	    = $total_amount;
-            if(!empty($user_type) && $user_type === 'sellers'){
-                // seller add dispute
-                // $notifyData['receiver_id']		    = $buyer_id;
-                // $notifyData['linked_profile']	    = $buyer_profile_id;
-                // $notifyData['user_type']		        = 'buyers';
+            if(!empty($user_type) && $user_type === 'buyers'){
+                // buyer add dispute
+                // $notifyData['receiver_id']		    = $seller_id;
+                // $notifyData['linked_profile']	    = $seller_profile_id;
+                // $notifyData['user_type']		        = 'sellers';
                 /// Add admin emial for creating a dispute request
 
             } else {
-                // buyer add dispute
-                // Notification to seller on refund request
-                $notifyDetails['buyer_comments']    = $dispute_details;
-                $notifyData['receiver_id']		    = $seller_id;
-                $notifyData['linked_profile']	    = $seller_profile_id;
-                $notifyData['user_type']		    = 'sellers';
+                // seller add dispute
+                // Notification to buyer on refund request
+                $notifyDetails['seller_comments']    = $dispute_details;
+                $notifyData['receiver_id']		    = $buyer_id;
+                $notifyData['linked_profile']	    = $buyer_profile_id;
+                $notifyData['user_type']		    = 'buyers';
                 $notifyData['type']		            = 'project_refund_request';
                 $notifyData['post_data']		    = $notifyDetails;
                 do_action('taskbot_notification_message', $notifyData );
                 /* Project refund request */
                 if(class_exists('Taskbot_Email_helper')){
                     $emailData                      = array();
-                    $emailData['seller_email']      = get_userdata( $seller_id )->user_email;
-                    $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                    $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_email']      = get_userdata( $buyer_id )->user_email;
+                    $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                     $emailData['project_title']     = get_the_title($project_id);
                     
                     if (class_exists('TaskbotProjectDisputes')) {
                         $email_helper = new TaskbotProjectDisputes();
-                        /* email to seller */
-                        $emailData['dispute_link']  = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'dispute',$dispute_id);
-                        $email_helper->dispute_project_request_seller_email($emailData);
+                        /* email to buyer */
+                        $emailData['dispute_link']  = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $buyer_id, true, 'dispute',$dispute_id);
+                        $email_helper->dispute_project_request_buyer_email($emailData);
                     }
                 }
             }
@@ -735,8 +735,8 @@ if( !function_exists('taskbotCompleteProposal') ){
             
             $user_details       = get_user_by( 'ID', $user_id );
             $user_email         = !empty($user_details->user_email) ? $user_details->user_email : '';
-            $seller_id          = get_post_field( 'post_author', $proposal_id );
-            $linked_profile     = taskbot_get_linked_profile_id($user_id, '', 'buyers');
+            $buyer_id          = get_post_field( 'post_author', $proposal_id );
+            $linked_profile     = taskbot_get_linked_profile_id($user_id, '', 'sellers');
             $user_profiel_name  = taskbot_get_username($linked_profile);
             
             if( !empty($rating_type) && $rating_type == 'rating' ){
@@ -758,7 +758,7 @@ if( !function_exists('taskbotCompleteProposal') ){
                 update_comment_meta($comment_id, 'rating', intval($rating));
                 update_comment_meta($comment_id, '_project_order', intval($proposal_id));
                 update_comment_meta($comment_id, '_rating_title', ($rating_title));
-                update_comment_meta($comment_id, 'seller_id', intval($seller_id));
+                update_comment_meta($comment_id, 'buyer_id', intval($buyer_id));
                 update_comment_meta($comment_id, 'verified', 1);
                 update_post_meta($proposal_id, '_rating_id', $comment_id);
                 update_post_meta($proposal_id, '_rating', intval($rating));
@@ -771,7 +771,7 @@ if( !function_exists('taskbotCompleteProposal') ){
             );
             wp_update_post( $proposal_post );
             if( !empty($rating_type) && $rating_type == 'rating' ){
-                taskbot_seller_rating($seller_id);
+                taskbot_buyer_rating($buyer_id);
             }
             $proposal_meta  = get_post_meta( $proposal_id, 'proposal_meta',true);
             $proposal_type  = !empty($proposal_meta['proposal_type']) ? $proposal_meta['proposal_type'] : '';
@@ -832,15 +832,15 @@ if( !function_exists('taskbotUpdateMilestoneStatus') ){
             $order_id           = !empty($proposal_meta['milestone'][$milestone_id]['order_id']) ? intval($proposal_meta['milestone'][$milestone_id]['order_id']) : 0;
             $project_id         = get_post_meta( $proposal_id, 'project_id',true);
             $project_id         = !empty($project_id) ? intval($project_id) : 0;
-            $buyer_id           = get_post_field( 'post_author', $project_id );
+            $seller_id           = get_post_field( 'post_author', $project_id );
 
-            $buyer_profile_id                   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
-            $seller_id                          = get_post_field( 'post_author', $proposal_id );
-            $seller_profile_id                  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+            $seller_profile_id                   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+            $buyer_id                          = get_post_field( 'post_author', $proposal_id );
+            $buyer_profile_id                  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
             $notifyDetails                      = array();
             $notifyData                         = array();
-            $notifyDetails['buyer_id']  	    = $buyer_profile_id;
             $notifyDetails['seller_id']  	    = $seller_profile_id;
+            $notifyDetails['buyer_id']  	    = $buyer_profile_id;
             $notifyDetails['project_id']  	    = $project_id;
             $notifyDetails['proposal_id']  	    = $proposal_id;
             $notifyDetails['milestone_id']  	= $milestone_id;
@@ -854,26 +854,26 @@ if( !function_exists('taskbotUpdateMilestoneStatus') ){
                     $proposal_meta['milestone'][$milestone_id]['completed_date']  = $time;
                     update_post_meta( $order_id, '_task_status' , 'completed');
                     update_post_meta( $order_id, '_task_completed_time', $time );
-                    $notifyData['receiver_id']		    = $seller_id;
-                    $notifyData['linked_profile']	    = $seller_profile_id;
-                    $notifyData['user_type']		    = 'sellers';
+                    $notifyData['receiver_id']		    = $buyer_id;
+                    $notifyData['linked_profile']	    = $buyer_profile_id;
+                    $notifyData['user_type']		    = 'buyers';
                     $notifyData['type']		            = 'milestone_completed';
                     do_action('taskbot_notification_message', $notifyData );
 
-                    /* Email to seller on milestone complete */
-                    $milestone_complete_switch        = !empty($taskbot_settings['email_milestone_complete_seller']) ? $taskbot_settings['email_milestone_complete_seller'] : true;
+                    /* Email to buyer on milestone complete */
+                    $milestone_complete_switch        = !empty($taskbot_settings['email_milestone_complete_buyer']) ? $taskbot_settings['email_milestone_complete_buyer'] : true;
                     if(class_exists('Taskbot_Email_helper') && !empty($milestone_complete_switch)){
                         $emailData                      = array();
-                        $emailData['seller_email']      = get_userdata( $seller_id )->user_email;
-                        $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                        $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                        $emailData['buyer_email']      = get_userdata( $buyer_id )->user_email;
+                        $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                        $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                         $emailData['project_title']     = get_the_title($project_id );
                         $emailData['milestone_title']   = !empty($proposal_meta['milestone'][$milestone_id]['title']) ? $proposal_meta['milestone'][$milestone_id]['title'] : '';
-                        $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $seller_id, true, 'activity', $proposal_id);
+                        $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $buyer_id, true, 'activity', $proposal_id);
                         
                         if (class_exists('TaskbotMilestones')) {
                             $email_helper = new TaskbotMilestones();
-                            $email_helper->milestone_complete_seller_email($emailData);
+                            $email_helper->milestone_complete_buyer_email($emailData);
                         }
                     }
                 }
@@ -888,51 +888,51 @@ if( !function_exists('taskbotUpdateMilestoneStatus') ){
                     if(!empty($proposal_meta['milestone'][$milestone_id])){
                         $proposal_meta['milestone'][$milestone_id]['decline_reason']  = $request['decline_reason'];
                         $proposal_meta['milestone'][$milestone_id]['decline_date']    = $time;
-                        $notifyData['receiver_id']		    = $seller_id;
-                        $notifyData['linked_profile']	    = $seller_profile_id;
-                        $notifyData['user_type']		    = 'sellers';
+                        $notifyData['receiver_id']		    = $buyer_id;
+                        $notifyData['linked_profile']	    = $buyer_profile_id;
+                        $notifyData['user_type']		    = 'buyers';
                         $notifyData['type']		            = 'milestone_decline';
                         do_action('taskbot_notification_message', $notifyData );
 
                         /* milestone decline email */
-                        $milestone_decline_switch        = !empty($taskbot_settings['email_milestone_decline_seller']) ? $taskbot_settings['email_milestone_decline_seller'] : true;
+                        $milestone_decline_switch        = !empty($taskbot_settings['email_milestone_decline_buyer']) ? $taskbot_settings['email_milestone_decline_buyer'] : true;
                         if(class_exists('Taskbot_Email_helper') && !empty($milestone_decline_switch)){
                             $emailData                      = array();
-                            $emailData['seller_email']      = get_userdata( $seller_id )->user_email;
-                            $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                            $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                            $emailData['buyer_email']      = get_userdata( $buyer_id )->user_email;
+                            $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                            $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                             $emailData['project_title']     = get_the_title($project_id );
                             $emailData['milestone_title']   = !empty($proposal_meta['milestone'][$milestone_id]['title']) ? $proposal_meta['milestone'][$milestone_id]['title'] : '';
-                            $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $seller_id, true, 'activity', $proposal_id);
+                            $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $buyer_id, true, 'activity', $proposal_id);
                             
                             if (class_exists('TaskbotMilestones')) {
                                 $email_helper = new TaskbotMilestones();
-                                $email_helper->milestone_decline_seller_email($emailData);
+                                $email_helper->milestone_decline_buyer_email($emailData);
                             }
 
                         }
                     }
                 }
             } else if( $status === 'requested'){
-                $notifyData['receiver_id']		    = $buyer_id;
-                $notifyData['linked_profile']	    = $buyer_profile_id;
-                $notifyData['user_type']		    = 'buyers';
+                $notifyData['receiver_id']		    = $seller_id;
+                $notifyData['linked_profile']	    = $seller_profile_id;
+                $notifyData['user_type']		    = 'sellers';
                 $notifyData['type']		            = 'milestone_request';
                 do_action('taskbot_notification_message', $notifyData );
-                /* Emial to buyer on milestone approval request */
-                $milestone_approval_req_switch        = !empty($taskbot_settings['email_req_milestone_approval_buyer']) ? $taskbot_settings['email_req_milestone_approval_buyer'] : true;
+                /* Emial to seller on milestone approval request */
+                $milestone_approval_req_switch        = !empty($taskbot_settings['email_req_milestone_approval_seller']) ? $taskbot_settings['email_req_milestone_approval_seller'] : true;
                 if(class_exists('Taskbot_Email_helper') && !empty($milestone_approval_req_switch)){
                     $emailData                      = array();
-                    $emailData['buyer_email']        = get_userdata( $buyer_id )->user_email;
-                    $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                    $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                    $emailData['seller_email']        = get_userdata( $seller_id )->user_email;
+                    $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                     $emailData['project_title']     = get_the_title($project_id );
                     $emailData['milestone_title']   = !empty($proposal_meta['milestone'][$milestone_id]['title']) ? $proposal_meta['milestone'][$milestone_id]['title'] : '';
-                    $emailData['milestone_link']    = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $buyer_id, true, 'activity',$proposal_id);
+                    $emailData['milestone_link']    = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $seller_id, true, 'activity',$proposal_id);
                     
                     if (class_exists('TaskbotMilestones')) {
                         $email_helper = new TaskbotMilestones();
-                        $email_helper->approval_milestone_req_buyer_email($emailData);
+                        $email_helper->approval_milestone_req_seller_email($emailData);
                     }
                 }
 
@@ -1027,29 +1027,29 @@ if( !function_exists('taskbotProjectActivities') ){
                     add_comment_meta($comment_id, 'message_files', $project_files);
                 }
                 
-                $buyer_id           = get_post_field( 'post_author', $project_id );
-                $seller_id          = get_post_field( 'post_author', $proposal_id );
+                $seller_id           = get_post_field( 'post_author', $project_id );
+                $buyer_id          = get_post_field( 'post_author', $proposal_id );
                 add_comment_meta($comment_id, 'user_type', $user_type);
                 add_comment_meta($comment_id, 'project_id', $project_id);
-                add_comment_meta($comment_id, 'buyer_id', $buyer_id);
                 add_comment_meta($comment_id, 'seller_id', $seller_id);
+                add_comment_meta($comment_id, 'buyer_id', $buyer_id);
 
-                $seller_profile_id      = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
-                $buyer_profile_id       = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
+                $buyer_profile_id      = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
+                $seller_profile_id       = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
                 $sender_id              = 0;
                 $reciver_id             = 0;
                 $reciver_profile_id     = 0;
                 $sender_profile_id      = 0;
-                if( !empty($user_type) && $user_type === 'sellers' ){
-                    $sender_id              = $seller_id;
-                    $sender_profile_id      = $seller_profile_id;
-                    $reciver_id             = $buyer_id;
-                    $reciver_profile_id     = $buyer_profile_id;
-                } else if( !empty($user_type) && $user_type === 'buyers' ){
+                if( !empty($user_type) && $user_type === 'buyers' ){
                     $sender_id              = $buyer_id;
                     $sender_profile_id      = $buyer_profile_id;
                     $reciver_id             = $seller_id;
                     $reciver_profile_id     = $seller_profile_id;
+                } else if( !empty($user_type) && $user_type === 'sellers' ){
+                    $sender_id              = $seller_id;
+                    $sender_profile_id      = $seller_profile_id;
+                    $reciver_id             = $buyer_id;
+                    $reciver_profile_id     = $buyer_profile_id;
                 }
                 $notifyDetails                      = array();
                 $notifyDetails['sender_id']  	    = $sender_profile_id;
@@ -1117,33 +1117,33 @@ if( !function_exists('taskbotDeclineProposal') ){
                 wp_update_post( $tb_post_data );
                 update_post_meta( $proposal_id, 'decline_detail',$detail);
                 $project_id                         = get_post_meta( $proposal_id, 'project_id',true );
-                $buyer_id                           = !empty($project_id) ? get_post_field( 'post_author', $project_id ) : 0;
-                $buyer_profile_id                   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
-                $seller_id                          = get_post_field( 'post_author', $proposal_id );
-                $seller_profile_id                  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+                $seller_id                           = !empty($project_id) ? get_post_field( 'post_author', $project_id ) : 0;
+                $seller_profile_id                   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+                $buyer_id                          = get_post_field( 'post_author', $proposal_id );
+                $buyer_profile_id                  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
                 $notifyDetails                      = array();
-                $notifyDetails['buyer_id']  	    = $buyer_profile_id;
                 $notifyDetails['seller_id']  	    = $seller_profile_id;
+                $notifyDetails['buyer_id']  	    = $buyer_profile_id;
                 $notifyDetails['project_id']  	    = $project_id;
                 $notifyDetails['proposal_id']  	    = $proposal_id;
                 $notifyData['post_data']		    = $notifyDetails;
                 $notifyData['type']		            = 'rejected_proposal';
-                $notifyData['receiver_id']		    = $seller_id;
-                $notifyData['linked_profile']	    = $seller_profile_id;
-                $notifyData['user_type']		    = 'sellers';
+                $notifyData['receiver_id']		    = $buyer_id;
+                $notifyData['linked_profile']	    = $buyer_profile_id;
+                $notifyData['user_type']		    = 'buyers';
                 do_action('taskbot_notification_message', $notifyData );
                 /// Add proposal decline email
-                $proposal_decline_switch        = !empty($taskbot_settings['email_proposal_decline_seller']) ? $taskbot_settings['email_proposal_decline_seller'] : true;
+                $proposal_decline_switch        = !empty($taskbot_settings['email_proposal_decline_buyer']) ? $taskbot_settings['email_proposal_decline_buyer'] : true;
                 if(class_exists('Taskbot_Email_helper') && !empty($proposal_decline_switch)){
                     $emailData                      = array();
-                    $emailData['seller_email']      = get_userdata($seller_id)->user_email;
-                    $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                    $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_email']      = get_userdata($buyer_id)->user_email;
+                    $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                     $emailData['project_title']     = get_the_title($project_id);
-                    $emailData['proposal_link']     = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $seller_id, true, 'listing');
+                    $emailData['proposal_link']     = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $buyer_id, true, 'listing');
                     if (class_exists('TaskbotProposals')) {
                         $email_helper = new TaskbotProposals();
-                        $email_helper->decline_proposal_seller_email($emailData);
+                        $email_helper->decline_proposal_buyer_email($emailData);
                     }
                 }
                 
@@ -1234,38 +1234,38 @@ if( !function_exists('taskbotAddMilestone') ){
         } else {
             $proposal_meta['milestone'] = $milestones;
             update_post_meta( $proposal_id, 'proposal_meta',$proposal_meta );
-            // Notification and email to buyer
+            // Notification and email to seller
             $project_id         = get_post_meta( $proposal_id, 'project_id',true);
             $project_id         = !empty($project_id) ? intval($project_id) : 0;
-            $buyer_id           = get_post_field( 'post_author', $project_id );
-            $seller_id          = get_post_field( 'post_author', $proposal_id );
+            $seller_id           = get_post_field( 'post_author', $project_id );
+            $buyer_id          = get_post_field( 'post_author', $proposal_id );
             
-            $seller_profile_id  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
-            $buyer_profile_id   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
+            $buyer_profile_id  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id,'','buyers') : 0;
+            $seller_profile_id   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id,'','sellers') : 0;
             
             $notifyDetails                      = array();
-            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['buyer_id']  	    = $buyer_profile_id;
+            $notifyDetails['seller_id']  	    = $seller_profile_id;
             $notifyDetails['project_id']  	    = $project_id;
             $notifyDetails['project_id']        = $project_id;
-            $notifyData['receiver_id']		    = $buyer_id;
-            $notifyData['linked_profile']	    = $buyer_profile_id;
-            $notifyData['user_type']		    = 'buyers';
+            $notifyData['receiver_id']		    = $seller_id;
+            $notifyData['linked_profile']	    = $seller_profile_id;
+            $notifyData['user_type']		    = 'sellers';
             $notifyData['type']		            = 'milestone_creation';
             $notifyData['post_data']		    = $notifyDetails;
             do_action('taskbot_notification_message', $notifyData );
-            /* Email to buyer on new milestone */
-            $project_new_milestone_switch        = !empty($taskbot_settings['email_new_project_milestone_buyer_switch']) ? $taskbot_settings['email_new_project_milestone_buyer_switch'] : true;
+            /* Email to seller on new milestone */
+            $project_new_milestone_switch        = !empty($taskbot_settings['email_new_project_milestone_seller_switch']) ? $taskbot_settings['email_new_project_milestone_seller_switch'] : true;
             if(class_exists('Taskbot_Email_helper') && !empty($project_new_milestone_switch)){
                 $emailData                      = array();
-                $emailData['buyer_email']       = get_userdata( $buyer_id )->user_email;
-                $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                $emailData['seller_email']       = get_userdata( $seller_id )->user_email;
+                $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                 $emailData['project_title']     = get_the_title($project_id);
-                $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $buyer_id, true, 'activity',$proposal_id);
+                $emailData['project_link']      = Taskbot_Profile_Menu::taskbot_profile_menu_link('projects', $seller_id, true, 'activity',$proposal_id);
                 if (class_exists('TaskbotMilestones')) {
                     $email_helper = new TaskbotMilestones();
-                    $email_helper->project_new_milestone_buyer_email($emailData);
+                    $email_helper->project_new_milestone_seller_email($emailData);
                 }
             }
 
@@ -1290,9 +1290,9 @@ if( !function_exists('taskbotSubmitProposal') ){
         $package_option	        = !empty($taskbot_settings['package_option']) ? $taskbot_settings['package_option'] : '';
         $paid_proposal   = false;
 
-        if(!empty($package_option) && ( $package_option == 'buyer_free' || $package_option == 'paid' )){
+        if(!empty($package_option) && ( $package_option == 'seller_free' || $package_option == 'paid' )){
             $paid_proposal   = true;
-            $package_details  		= get_user_meta($current_user->ID, 'seller_package_details', true);
+            $package_details  		= get_user_meta($current_user->ID, 'buyer_package_details', true);
             $number_project_credits	= !empty($package_details['number_project_credits']) ? $package_details['number_project_credits'] : 0;
 
             if(empty($number_project_credits) ){
@@ -1442,15 +1442,15 @@ if( !function_exists('taskbotSubmitProposal') ){
                 $data['proposal_type']  = 'fixed';
             }
             
-            $profile_id     = taskbot_get_linked_profile_id($user_id,'','sellers');
-            $seller_name    = taskbot_get_username($profile_id);
+            $profile_id     = taskbot_get_linked_profile_id($user_id,'','buyers');
+            $buyer_name    = taskbot_get_username($profile_id);
             $project_name   = get_the_title($project_id);
             $porposal_details   = !empty($data['description']) ? $data['description'] : '';
             $proposal_meta      = $data;
-            $proposal_name      = $seller_name.'-'.$project_name;
+            $proposal_name      = $buyer_name.'-'.$project_name;
             $proposal_status    = $status;
-            $buyer_id           = get_post_field( 'post_author', $project_id );
-            $buyer_id           = !empty($buyer_id) ? intval($buyer_id) : 0;
+            $seller_id           = get_post_field( 'post_author', $project_id );
+            $seller_id           = !empty($seller_id) ? intval($seller_id) : 0;
 
             if( !empty($status) && $status === 'publish' ){
                 $proposal_status    = !empty($taskbot_settings['proposal_status']) ? $taskbot_settings['proposal_status'] : 'publish';
@@ -1467,13 +1467,13 @@ if( !function_exists('taskbotSubmitProposal') ){
 
                 $proposal_id = wp_insert_post( $tb_post_data );
 
-                if(!empty($package_option) && ( $package_option == 'buyer_free' || $package_option == 'paid' )){
+                if(!empty($package_option) && ( $package_option == 'seller_free' || $package_option == 'paid' )){
                     $paid_proposal   = true;
                     $credits_required	    = !empty($taskbot_settings['credits_required']) ? $taskbot_settings['credits_required'] : 0;
                     $package_credit_details      = intval($package_details['number_project_credits'] ) - intval($credits_required);
                     $package_details['number_project_credits']  = $package_credit_details;
         
-                    update_user_meta( $user_id, 'seller_package_details', $package_details );
+                    update_user_meta( $user_id, 'buyer_package_details', $package_details );
                 } 
 
             } else {
@@ -1485,7 +1485,7 @@ if( !function_exists('taskbotSubmitProposal') ){
 
             update_post_meta( $proposal_id, 'proposal_meta',$data );
             update_post_meta( $proposal_id, 'project_id',$project_id );
-            update_post_meta( $proposal_id, 'buyer_id',$buyer_id );
+            update_post_meta( $proposal_id, 'seller_id',$seller_id );
             update_post_meta( $proposal_id, 'proposal_type',$project_type );
             update_post_meta( $proposal_id, '_hired_status',false );
             do_action( 'taskbot_update_proposal', $proposal_id,$data );
@@ -1495,37 +1495,37 @@ if( !function_exists('taskbotSubmitProposal') ){
             if( !empty($proposal_status) && $proposal_status === 'publish'){
                 // Email to employer and admin for proposal
                 // Notification to employer and admin for proposal
-                $buyer_id                           = get_post_field( 'post_author', $project_id );
-                $buyer_profile_id                   = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
-                $seller_id                          = get_post_field( 'post_author', $proposal_id );
-                $seller_profile_id                  = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+                $seller_id                           = get_post_field( 'post_author', $project_id );
+                $seller_profile_id                   = !empty($seller_id) ? taskbot_get_linked_profile_id($seller_id, '', 'sellers') : '';
+                $buyer_id                          = get_post_field( 'post_author', $proposal_id );
+                $buyer_profile_id                  = !empty($buyer_id) ? taskbot_get_linked_profile_id($buyer_id, '', 'buyers') : '';
                 $notifyDetails                      = array();
-                $notifyDetails['buyer_id']  	    = $buyer_profile_id;
                 $notifyDetails['seller_id']  	    = $seller_profile_id;
+                $notifyDetails['buyer_id']  	    = $buyer_profile_id;
                 $notifyDetails['project_id']  	    = $project_id;
                 $notifyDetails['proposal_id']  	    = $proposal_id;
                 $notifyData['post_data']		    = $notifyDetails;
                 $notifyData['type']		            = 'recived_proposal';
-                $notifyData['receiver_id']		    = $buyer_id;
-                $notifyData['linked_profile']	    = $buyer_profile_id;
-                $notifyData['user_type']		    = 'buyers';
+                $notifyData['receiver_id']		    = $seller_id;
+                $notifyData['linked_profile']	    = $seller_profile_id;
+                $notifyData['user_type']		    = 'sellers';
                 do_action('taskbot_notification_message', $notifyData );
 
-                /* Email to buyer and admin */
-                $submit_proposal_buyer_switch = !empty($taskbot_settings['email_submit_proposal_buyer']) ? $taskbot_settings['email_submit_proposal_buyer'] : true;
+                /* Email to seller and admin */
+                $submit_proposal_seller_switch = !empty($taskbot_settings['email_submit_proposal_seller']) ? $taskbot_settings['email_submit_proposal_seller'] : true;
                 $submit_proposal_admin_switch = !empty($taskbot_settings['email_submited_proposal_admin']) ? $taskbot_settings['email_submited_proposal_admin'] : true;
                 if(class_exists('Taskbot_Email_helper')){
                     $emailData                      = array();
-                    $emailData['buyer_email']       = get_userdata($buyer_id)->user_email;
-                    $emailData['buyer_name']        = taskbot_get_username($buyer_profile_id);
-                    $emailData['seller_name']       = taskbot_get_username($seller_profile_id);
+                    $emailData['seller_email']       = get_userdata($seller_id)->user_email;
+                    $emailData['seller_name']        = taskbot_get_username($seller_profile_id);
+                    $emailData['buyer_name']       = taskbot_get_username($buyer_profile_id);
                     $emailData['project_title']     = get_the_title($project_id);
                     
                     if (class_exists('TaskbotProposals')) {
                         $email_helper = new TaskbotProposals();
-                        if(!empty($submit_proposal_buyer_switch)){
-                            $emailData['proposal_link']     = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $buyer_id, true, 'detail', $proposal_id);
-                            $email_helper->submit_proposal_buyer_email($emailData);
+                        if(!empty($submit_proposal_seller_switch)){
+                            $emailData['proposal_link']     = Taskbot_Profile_Menu::taskbot_profile_menu_link('proposals', $seller_id, true, 'detail', $proposal_id);
+                            $email_helper->submit_proposal_seller_email($emailData);
                         }
 
                         if(!empty($submit_proposal_admin_switch)){
@@ -1585,7 +1585,7 @@ if( !function_exists('taskbot_project_proposal_icons_html') ){
         ob_start();
         if( !empty($proposals) ){
             foreach($proposals as $proposal){
-                $linked_profile     = !empty($proposal->post_author) ? taskbot_get_linked_profile_id($proposal->post_author,'','sellers') : 0;
+                $linked_profile     = !empty($proposal->post_author) ? taskbot_get_linked_profile_id($proposal->post_author,'','buyers') : 0;
                 $image_src          = apply_filters( 'taskbot_avatar_fallback', taskbot_get_user_avatar(array('width' => 50, 'height' => 50), $linked_profile), array('width' => 50, 'height' => 50));
                 $username           = taskbot_get_username($linked_profile);
                 if( !empty($image_src) ){ ?>
@@ -1607,7 +1607,7 @@ if( !function_exists('taskbot_project_proposal_icons_html') ){
  * List proposal filter status
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_list_proposal_status_filter')) {
@@ -1695,8 +1695,8 @@ if( !function_exists('taskbot_proposal_status_tag') ){
  * Owner proposal status html
  *
  */
-if( !function_exists('taskbot_seller_proposal_status_tag') ){
-    function taskbot_seller_proposal_status_tag($post_id = '') {
+if( !function_exists('taskbot_buyer_proposal_status_tag') ){
+    function taskbot_buyer_proposal_status_tag($post_id = '') {
         $proposal_status    = get_post_status( $post_id);
         $proposal_status    = !empty($proposal_status) ? $proposal_status : '';
         $lable              = "";
@@ -1751,7 +1751,7 @@ if( !function_exists('taskbot_seller_proposal_status_tag') ){
             echo ob_get_clean();
         }
     }
-    add_action('taskbot_seller_proposal_status_tag', 'taskbot_seller_proposal_status_tag',10,1);
+    add_action('taskbot_buyer_proposal_status_tag', 'taskbot_buyer_proposal_status_tag',10,1);
 }
 
 /**
@@ -1857,7 +1857,7 @@ if( !function_exists('taskbot_proposal_invoice_status_tag') ){
  * Get activity chat history
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_project_comments_history')) {
@@ -1875,7 +1875,7 @@ if (!function_exists('taskbot_project_comments_history')) {
 
         $author_user_type   = !empty($user_type) ? $user_type : apply_filters('taskbot_get_user_type', $author_id);
         $author_profile_id  = taskbot_get_linked_profile_id($author_id, '', $author_user_type);
-        $auther_url         = !empty($author_user_type) && $author_user_type === 'sellers' ? get_the_permalink($author_profile_id) : '#';
+        $auther_url         = !empty($author_user_type) && $author_user_type === 'buyers' ? get_the_permalink($author_profile_id) : '#';
         $author_name        = taskbot_get_username($author_profile_id);
         $avatar             = apply_filters(
             'taskbot_avatar_fallback', taskbot_get_user_avatar(array('width' => 50, 'height' => 50), $author_profile_id), array('width' => 50, 'height' => 50)
@@ -1919,7 +1919,7 @@ if (!function_exists('taskbot_project_comments_history')) {
  */
 if (!function_exists('taskbot_proposal_order_budget_details')) {
     add_action( 'taskbot_proposal_order_budget_details', 'taskbot_proposal_order_budget_details', 10, 2);
-    function taskbot_proposal_order_budget_details($proposal_id =0, $user_type = 'sellers') {
+    function taskbot_proposal_order_budget_details($proposal_id =0, $user_type = 'buyers') {
 		if ( !class_exists('WooCommerce') ) {
 			return;
 		}

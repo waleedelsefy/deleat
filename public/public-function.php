@@ -296,7 +296,7 @@ if( !function_exists('TaskbotBuyerServicePDF') ){
 					taskbot_get_template_part('dashboard/dashboard', 'invoice-detail',$args);
 				}
                 
-            } else if( !empty($type) && $type === 'sellers'){
+            } else if( !empty($type) && $type !== 'buyers'){
 				if( !empty($order_type) && $order_type === 'hourly' ){
 					do_action( 'taskbot_seller_invoice_details', $args );
 				} else {
@@ -440,7 +440,7 @@ if( !function_exists('taskbotGetProposalBasic') ){
 		$proposal_details['proposal_meta']		= !empty($proposal_meta) ? $proposal_meta : array();
 		$proposal_details['proposal_status']	= $proposal_status;
 		$proposal_details['proposal_id']		= intval($proposal_id);
-		$proposal_details['seller_id']      	= (int)get_post_field( 'post_author', $proposal_id );
+		$proposal_details['auditor_id']      	= (int)get_post_field( 'post_author', $proposal_id );
 		$proposal_details['buyer_id']       	= (int)get_post_field( 'post_author', $project_id );	
 
 		/* get author of dispute */
@@ -854,6 +854,7 @@ if( !function_exists('taskbotOrderTasks') ){
         $task           = !empty($data['product_task']) ? $data['product_task'] : '';
         $subtasks       = !empty($data['subtasks']) ? explode(',',$data['subtasks']) : array();
         $seller_id      = get_post_field( 'post_author', $product_id );
+        $auditor_id      = get_post_field( 'post_author', $product_id );
         $plans 	        = get_post_meta($product_id, 'taskbot_product_plans', TRUE);
         $plans	        = !empty($plans) ? $plans : array();
         $user_balance   = !empty($user_id) ? get_user_meta( $user_id, '_buyer_balance',true ) : '';
@@ -887,6 +888,7 @@ if( !function_exists('taskbotOrderTasks') ){
             $cart_meta['price']		        = $plan_price;
             $cart_meta['subtasks']		    = $subtasks;
             $cart_meta['buyer_id']		    = $user_id;
+            $cart_meta['auditor_id']		 = $auditor_id;
             $cart_meta['seller_id']		    = $seller_id;
             $cart_meta['admin_shares']		= $admin_shares;
             $cart_meta['seller_shares']		= $seller_shares;
@@ -900,6 +902,7 @@ if( !function_exists('taskbotOrderTasks') ){
                 'seller_shares'     => $seller_shares,
                 'buyer_id'          => $user_id,
                 'seller_id'         => $seller_id,
+                'auditor_id'         => $auditor_id,
             );
             $woocommerce->cart->empty_cart();
             $cart_item_data = apply_filters('taskbot_order_task_cart_data',$cart_data);

@@ -40,15 +40,19 @@ $identity_verification	= !empty($taskbot_settings['identity_verification']) ? $t
 			<?php if ( !empty($reference) && !empty($mode) && $reference == 'dashboard' && $mode == 'billing') {
 				taskbot_get_template_part('dashboard/dashboard', 'billing-settings');
 			} else if ( !empty($reference) && !empty($mode) && $reference === 'dashboard' && $mode === 'profile') {
-				
-				if( !empty($user_type) && $user_type == 'sellers' ){
-					taskbot_get_template_part('dashboard/dashboard', 'profile-settings');
-					taskbot_get_template_part('dashboard/dashboard', 'education');
-				} else {
-					taskbot_get_template_part('dashboard/dashboard', 'buyer-setting');
-				}
 
-			} else if ( !empty($reference) && !empty($mode) && $reference === 'dashboard' && $mode === 'account') { 
+                if( !empty($user_type) && $user_type == 'sellers' ){
+                    taskbot_get_template_part('dashboard/dashboard', 'profile-settings');
+                    taskbot_get_template_part('dashboard/dashboard', 'education');
+                } else if( !empty($user_type) && $user_type == 'auditors' ) {
+                    taskbot_get_template_part('dashboard/dashboard', 'auditor-settings');
+                    taskbot_get_template_part('dashboard/dashboard', 'auditor-education');
+                } else {
+                    taskbot_get_template_part('dashboard/dashboard', 'buyer-setting');
+                }
+
+
+            } else if ( !empty($reference) && !empty($mode) && $reference === 'dashboard' && $mode === 'account') {
 				taskbot_get_template_part('dashboard/dashboard', 'account-settings');
 			} else if ( !empty($reference) && !empty($mode) && $reference === 'dashboard' && $mode === 'verification') { 
 				taskbot_get_template_part('dashboard/dashboard', 'identity-verification');

@@ -623,8 +623,8 @@ class Taskbot_Admin_Hooks {
 			$linked_profile_auditor 	= get_user_meta($user_id, '_linked_profile_auditor', true);
 
 			$linked_profile 		= !empty($linked_profile) ? intval($linked_profile) : '';
-			$linked_profile_buyer 		= !empty($linked_profile_buyer) ? intval($linked_profile_buyer) : '';
-			$linked_profile_auditor 		= !empty($linked_profile_auditor) ? intval($linked_profile_auditor) : '';
+			$linked_profile_buyer 	= !empty($linked_profile_buyer) ? intval($linked_profile_buyer) : '';
+			$linked_profile_auditor	= !empty($linked_profile_auditor) ? intval($linked_profile_auditor) : '';
 
 			if(!empty($linked_profile) && !empty(get_post_status( $linked_profile ))){
 				$val .= "<a class='generate-linked-data ".get_post_status( intval($linked_profile) )." data-post-id-".$linked_profile."' title='".esc_html__('Owner profile','taskbot')."' href=".get_edit_post_link($linked_profile).">".esc_html__('Owner: ').' '.taskbot_get_username($linked_profile) ."</a>";
@@ -721,7 +721,7 @@ class Taskbot_Admin_Hooks {
 	 * Update earning
 	 *
 	 * @throws error
-	 * @author Amentotech <theamentotech@gmail.com>
+	 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 	 * @return
 	 */
 	public function taskbot_update_admin_notification() {

@@ -34,7 +34,7 @@ if (!class_exists('Taskbot_Modal_Popup')) {
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public function taskbot_prepare_modal_popup()
         {
@@ -99,7 +99,7 @@ if (!class_exists('Taskbot_Modal_Popup')) {
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public static function taskbot_faq_modal_popup()
         {
@@ -196,7 +196,7 @@ if (!class_exists('Taskbot_Modal_Popup')) {
          *
          * @return
          * @throws error
-         * @author Amentotech <theamentotech@gmail.com>
+         * @author Waleed Elsefy <waleedelsefy@gmail.com>
         */
         public function taskbot_reject_task()
         {

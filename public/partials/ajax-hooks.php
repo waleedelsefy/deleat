@@ -16,7 +16,7 @@
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('tasbkot_download_invoice')) {
     function tasbkot_download_invoice()
@@ -51,7 +51,7 @@ if (!function_exists('tasbkot_download_invoice')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_remove_invoice')) {
     function taskbot_remove_invoice(){
@@ -72,7 +72,7 @@ if (!function_exists('taskbot_remove_invoice')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_redirect_page')) {
     function taskbot_redirect_page()
@@ -126,7 +126,7 @@ if (!function_exists('taskbot_redirect_page')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_change_password')) {
     function taskbot_change_password()
@@ -196,7 +196,7 @@ if (!function_exists('taskbot_change_password')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_send_message')) {
     function taskbot_send_message()
@@ -261,7 +261,7 @@ if (!function_exists('taskbot_send_message')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('wp_guppy_start_chat')) {
     function wp_guppy_start_chat()
@@ -314,7 +314,7 @@ if (!function_exists('wp_guppy_start_chat')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_send_user_msg')) {
     function taskbot_send_user_msg()
@@ -367,7 +367,7 @@ if (!function_exists('taskbot_send_user_msg')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_account_settings')) {
     function taskbot_save_account_settings()
@@ -414,7 +414,7 @@ if (!function_exists('taskbot_save_account_settings')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_switch_user_settings')) {
     function taskbot_switch_user_settings()
@@ -456,7 +456,7 @@ if (!function_exists('taskbot_switch_user_settings')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_billing_settings')) {
     function taskbot_save_billing_settings()
@@ -515,7 +515,7 @@ if (!function_exists('taskbot_save_billing_settings')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_profile_settings')) {
     function taskbot_save_profile_settings()
@@ -594,11 +594,7 @@ if (!function_exists('taskbot_save_profile_settings')) {
        	$zipcode 	    = !empty( $profile_data['zipcode'] ) ? sanitize_text_field( $profile_data['zipcode'] ) : 0;
        	$seller_type 	= !empty( $profile_data['seller_type'] ) ? sanitize_text_field( $profile_data['seller_type'] ) : '';
        	$auditor_type 	= !empty( $profile_data['auditor_type'] ) ? sanitize_text_field( $profile_data['auditor_type'] ) : '';
-       	$english_level 	= !empty( $profile_data['english_level'] ) ? sanitize_text_field( $profile_data['english_level'] ) : '';
-       	$hourly_rate 	= !empty( $profile_data['hourly_rate'] ) ? sanitize_text_field( $profile_data['hourly_rate'] ) : '';
         $state          = !empty( $profile_data['state'] ) ? sanitize_text_field( $profile_data['state'] ) : '';
-        $skills         = !empty($profile_data['skills']) ? ($profile_data['skills']) : array();
-        $languages      = !empty($profile_data['languages']) ? ($profile_data['languages']) : array();
         $old_zipcode    = get_post_meta( $profile_id, 'zipcode', true );
         $old_country    = get_post_meta( $profile_id, 'country', true );
         $old_location   = get_post_meta( $profile_id, 'location',true );
@@ -694,7 +690,7 @@ if (!function_exists('taskbot_save_profile_settings')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_buyer_settings')) {
     function taskbot_save_buyer_settings()
@@ -808,7 +804,7 @@ if (!function_exists('taskbot_save_buyer_settings')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_deactive_account')) {
     function taskbot_deactive_account()
@@ -885,7 +881,7 @@ if (!function_exists('taskbot_deactive_account')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_active_account')) {
     function taskbot_active_account()
@@ -920,7 +916,7 @@ if (!function_exists('taskbot_active_account')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_update_avatar')) {
     function taskbot_update_avatar()
@@ -1005,7 +1001,7 @@ if (!function_exists('taskbot_update_avatar')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_saved_items')) {
     function taskbot_saved_items()
@@ -1036,7 +1032,7 @@ if (!function_exists('taskbot_saved_items')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_education')) {
     function taskbot_save_education()
@@ -1118,7 +1114,7 @@ if (!function_exists('taskbot_save_education')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_remove_education')) {
     function taskbot_remove_education()
@@ -1170,7 +1166,7 @@ if (!function_exists('taskbot_remove_education')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_terms_dropdown')) {
   function taskbot_get_terms_dropdown($parent_id='', $term_id='')
@@ -1205,7 +1201,7 @@ if (!function_exists('taskbot_get_terms_dropdown')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_terms')) {
     function taskbot_get_terms($parent_id='', $term_id='')
@@ -1264,7 +1260,7 @@ if (!function_exists('taskbot_get_terms')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_terms_subcategories_dropdown')) {
     function taskbot_get_terms_subcategories_dropdown($parent_id, $term_ids=array())
@@ -1313,7 +1309,7 @@ if (!function_exists('taskbot_get_terms_subcategories_dropdown')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_terms_subcategories')) {
     function taskbot_get_terms_subcategories($parent_id, $term_ids=array())
@@ -1381,7 +1377,7 @@ if (!function_exists('taskbot_get_terms_subcategories')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_service_checkout')) {
     function taskbot_service_checkout()
@@ -1490,7 +1486,7 @@ if (!function_exists('taskbot_service_checkout')) {
  * Hiring payment setting
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if ( !function_exists( 'taskbot_processing_fee_calculation' ) ) {
@@ -1521,7 +1517,7 @@ if ( !function_exists( 'taskbot_processing_fee_calculation' ) ) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_package_checkout')) {
     function taskbot_package_checkout()
@@ -1586,7 +1582,7 @@ if (!function_exists('taskbot_package_checkout')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_wallet_checkout')) {
     function taskbot_wallet_checkout()
@@ -1658,7 +1654,7 @@ if (!function_exists('taskbot_wallet_checkout')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_dropdown_cats_multiple')) {
     function taskbot_dropdown_cats_multiple( $output, $r ) {
@@ -1692,7 +1688,7 @@ if (!function_exists('taskbot_dropdown_cats_multiple')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_tasks_total')) {
     function taskbot_get_tasks_total()
@@ -1758,7 +1754,7 @@ if (!function_exists('taskbot_get_tasks_total')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_download_zip_file')) {
     function taskbot_download_zip_file()
@@ -1823,7 +1819,7 @@ if (!function_exists('taskbot_download_zip_file')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_complete_task_order')) {
     function taskbot_complete_task_order()
@@ -1886,7 +1882,7 @@ if (!function_exists('taskbot_complete_task_order')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_order_rating')) {
     function taskbot_task_order_rating()
@@ -1944,7 +1940,7 @@ if (!function_exists('taskbot_task_order_rating')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_cancellation')) {
     function taskbot_task_cancellation()
@@ -1999,7 +1995,7 @@ if (!function_exists('taskbot_task_cancellation')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_tk_rating_view')) {
     function taskbot_tk_rating_view()
@@ -2059,7 +2055,7 @@ if (!function_exists('taskbot_tk_rating_view')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_tk_cancelled_view')) {
     function taskbot_tk_cancelled_view()
@@ -2116,7 +2112,7 @@ if (!function_exists('taskbot_tk_cancelled_view')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_search_get_terms_dropdown')) {
     function taskbot_task_search_get_terms_dropdown($parent_cat_slug='', $sub_cat_slug='', $container_class='tk-select',$option='')
@@ -2169,7 +2165,7 @@ if (!function_exists('taskbot_task_search_get_terms_dropdown')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_search_get_terms')) {
     function taskbot_task_search_get_terms($parent_cat_slug='', $sub_cat_slug='',$option='')
@@ -2243,7 +2239,7 @@ if (!function_exists('taskbot_task_search_get_terms')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_search_get_terms_subcategories_dropdown')) {
     function taskbot_task_search_get_terms_subcategories_dropdown($parent_cat_slug, $terms_slug  = array(),$option='')
@@ -2274,7 +2270,7 @@ if (!function_exists('taskbot_task_search_get_terms_subcategories_dropdown')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_task_search_get_terms_subcategories')) {
     function taskbot_task_search_get_terms_subcategories( $parent_cat_slug, $terms_slug  = array(),$option='')
@@ -2323,7 +2319,7 @@ if (!function_exists('taskbot_task_search_get_terms_subcategories')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_product_terms')) {
     function taskbot_get_product_terms($parent_id, $selected_terms_arr)
@@ -2356,7 +2352,7 @@ if (!function_exists('taskbot_get_product_terms')) {
  * Create dispute
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_dispute_request_submit')) {
@@ -2392,7 +2388,7 @@ if (!function_exists('taskbot_dispute_request_submit')) {
  * Create dispute
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_submit_dispute')) {
@@ -2446,7 +2442,7 @@ if (!function_exists('taskbot_submit_dispute')) {
  * Create dispute auditors
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_auditor_submit_dispute')) {
@@ -2490,7 +2486,7 @@ if (!function_exists('taskbot_auditor_submit_dispute')) {
  * Create dispute
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_seller_submit_dispute')) {
@@ -2638,7 +2634,7 @@ if (!function_exists('taskbot_remove_paymentmethod')) {
  * Submit Withdraw Amount Request
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_money_withdraw')) {
@@ -2670,7 +2666,7 @@ if (!function_exists('taskbot_money_withdraw')) {
  * Get formated user billing address
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_user_billing_address')) {
@@ -2730,7 +2726,7 @@ if (!function_exists('taskbot_user_billing_address')) {
  * submit task activity/comment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if( !function_exists( 'taskbot_task_activity' ) ){
@@ -2775,7 +2771,7 @@ if( !function_exists( 'taskbot_task_activity' ) ){
  * submit task rejection comment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if( !function_exists( 'taskbot_submit_task_rejection_chat' ) ){
@@ -2907,7 +2903,7 @@ if( !function_exists( 'taskbot_submit_task_rejection_chat' ) ){
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_save_verification')) {
     function taskbot_save_verification()
@@ -3000,7 +2996,7 @@ if (!function_exists('taskbot_save_verification')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_cancel_verification_request')) {
     function taskbot_cancel_verification_request()
@@ -3094,7 +3090,7 @@ if (!function_exists('taskbot_identity_verification')) {
  * Duplicate project
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_duplicate_project')) {
@@ -3126,7 +3122,7 @@ if (!function_exists('taskbot_duplicate_project')) {
  * Price calcuation
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_calculate_price')) {
@@ -3155,7 +3151,7 @@ if (!function_exists('taskbot_calculate_price')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 if (!function_exists('taskbot_get_states')) {
     function taskbot_get_states( )

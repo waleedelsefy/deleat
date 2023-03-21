@@ -28,7 +28,7 @@ if (!empty($page_title_key) && $page_title_key == 'hired'){
     $page_title_key   = esc_html__('All','taskbot');
 }
 
-$page_title     = wp_sprintf('%s %s',$page_title_key,esc_html__('order listings', 'taskbot'));
+$page_title     = wp_sprintf('%s %s',$page_title_key,esc_html__('Audit listings', 'taskbot'));
 $show_posts     = get_option('posts_per_page') ? get_option('posts_per_page') : 10;
 $pg_page        = get_query_var('page') ? get_query_var('page') : 1; //rewrite the global var
 $pg_paged       = get_query_var('paged') ? get_query_var('paged') : 1; //rewrite the global var

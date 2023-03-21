@@ -5,7 +5,7 @@
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_disppute_date_query_count')) {

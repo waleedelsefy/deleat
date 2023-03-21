@@ -19,9 +19,9 @@ $redirect_url   = '';
 
 if( !is_user_logged_in() ){
     $redirect_url   = taskbot_get_page_uri('login');
-} else if( !empty($user_type) && !in_array($user_type,array('sellers','buyers') )){
+} else if( !empty($user_type) && !in_array($user_type,array('sellers','buyers','auditors') )){
   $redirect_url   = get_home_url();
-} else if( !empty($user_type) && in_array($user_type,array('sellers','buyers') )){
+} else if( !empty($user_type) && in_array($user_type,array('sellers','buyers','auditors') )){
     $redirect_url   = taskbot_get_page_access($user_identity,$user_type,$reference,$mode);
 }
 
@@ -92,7 +92,7 @@ if( !empty($deactive_account) && $deactive_account == 1 ){ ?>
                             } else if ( !empty($reference) && $reference === 'offers-cart' && $user_type === 'buyers') {
                                 do_action( 'taskbot_offers_cart', $args );
                             } elseif (is_user_logged_in() && $url_identity === $user_identity ) {
-                                if ( !empty($app_task_base) && !empty($reference) && !empty($mode) && $reference === 'task' && $mode === 'listing' && $user_type === 'sellers') {
+                                if ( !empty($app_task_base) && !empty($reference) && !empty($mode) && $reference === 'task' && $mode === 'listing' && $user_type !== 'buyers') {
                                     taskbot_get_template_part('dashboard/dashboard', 'services-listing');
                                 } else if ( !empty($reference) && !empty($mode) && $reference === 'offers' && $mode === 'listing') {
                                     do_action( 'taskbot_offers_listing', $args );
@@ -187,7 +187,7 @@ if( !empty($deactive_account) && $deactive_account == 1 ){ ?>
                                         }
                                     }
 
-                                }else if ( !empty($app_task_base) &&  !empty($reference) && $reference === 'orders' && $user_type === 'sellers') {
+                                }else if ( !empty($app_task_base) &&  !empty($reference) && $reference === 'orders' && $user_type === 'sellers' || $user_type === 'auditors') {
                                     taskbot_get_template_part('dashboard/dashboard', $user_type.'-tasks-orders');
                                 }else {
                                     taskbot_get_template_part('dashboard/dashboard', 'insights');

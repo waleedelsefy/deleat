@@ -35,7 +35,7 @@ class Taskbot_Admin_CPT_Proposals {
 	public function register_posttype() {
 		$labels = array(
 			'name'                  => esc_html__( 'Proposals', 'taskbot' ),
-			'singular_name'         => esc_html__( 'Buyer', 'taskbot' ),
+			'singular_name'         => esc_html__( 'Auditor', 'taskbot' ),
 			'menu_name'             => esc_html__( 'Proposals', 'taskbot' ),
 			'name_admin_bar'        => esc_html__( 'Proposals', 'taskbot' ),
 			'parent_item_colon'     => esc_html__( 'Parent proposal:', 'taskbot' ),
@@ -65,7 +65,7 @@ class Taskbot_Admin_CPT_Proposals {
 			'rewrite' 				=> array('slug' => 'proposal', 'with_front' => true),
 			'query_var' 			=> false,
 			'has_archive' 			=> false,
-			'show_in_menu' 			=> 'edit.php?post_type=sellers',
+			'show_in_menu' 			=> 'edit.php?post_type=auditors',
 			'capabilities' 			=> array(
 										'create_posts' => false
 									),	

@@ -14,7 +14,7 @@
  * Get notification options
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if( !function_exists('taskbot_get_notif_option')){

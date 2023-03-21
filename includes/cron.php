@@ -6,7 +6,7 @@
  * CRON init
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 
@@ -24,7 +24,7 @@ if( !function_exists('taskbot_cron_activate') ) {
  * Update expiry
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 if( !function_exists('taskbot_update_featured_listing') ) {

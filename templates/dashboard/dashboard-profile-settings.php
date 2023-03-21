@@ -31,13 +31,11 @@ $last_name		= !empty($tb_post_meta['last_name']) ? $tb_post_meta['last_name'] : 
 $description	= !empty($tb_post_meta['description']) ? $tb_post_meta['description'] : '';
 $birthday	= !empty($tb_post_meta['birthday']) ? $tb_post_meta['birthday'] : '';
 $hide_languages       = !empty($taskbot_settings['hide_languages']) ? $taskbot_settings['hide_languages'] : 'no';
-$seller_type_term	= wp_get_object_terms($profile_id, 'tb_seller_type');
 $auditor_type_term	= wp_get_object_terms($profile_id, 'tb_auditor_type');
 $first_name			= !empty($first_name) ? $first_name : '';
 $last_name			= !empty($last_name) ? $last_name : '';
 $birthday			= !empty($birthday) ? $birthday : '';
 $countries			= array();
-
 $states					= array();
 $state					= get_post_meta($profile_id, 'state', true);
 $state					= !empty($state) ? $state : '';
@@ -82,10 +80,6 @@ $country_class = "form-group-half";
 							<label class="form-group-title"><?php esc_html_e('birthday:', 'taskbot'); ?></label>
 							<input type="date" class="form-birthday" name="birthday" placeholder="<?php esc_attr_e('28/05/1994', 'taskbot'); ?>" autocomplete="off" value="<?php echo esc_attr($birthday); ?>">
 						</div>
-<!--						<div class="form-group form-group_vertical">
-							<label class="form-group-title"><?php /*esc_html_e('Your tagline:', 'taskbot'); */?></label>
-							<input type="text" class="form-control" name="tagline" placeholder="<?php /*esc_attr_e('Add tagline', 'taskbot'); */?>" autocomplete="off" value="<?php /*echo esc_attr($tag_line); */?>">
-						</div>-->
 						<div class="form-group form-group_vertical">
 							<label class="form-group-title"><?php esc_html_e('About you:', 'taskbot'); ?></label>
 							<textarea class="form-control" name="description" placeholder="<?php esc_attr_e('Write more info', 'taskbot'); ?>"><?php echo do_shortcode($description); ?></textarea>
@@ -134,13 +128,13 @@ $country_class = "form-group-half";
 						</div>
 						--><?php/**/ ?><!--
 						<div class="form-group-half form-group_vertical">
-							<label class="form-group-title"><?php /*esc_html_e('Owner type', 'taskbot'); */?></label>
+							<label class="form-group-title"><?php /*esc_html_e('Auditor type', 'taskbot'); */?></label>
 							<span class="tb-select">
-								<select id="seller_type" name="seller_type" data-placeholderinput="<?php /*esc_attr_e('Search seller type', 'taskbot'); */?>" data-placeholder="<?php /*esc_attr_e('Choose seller type', 'taskbot'); */?>">
-									<option selected hidden disabled><?php /*esc_html_e('Owner type', 'taskbot'); */?></option>
-									<?php /*if (is_array($seller_type_data) && !empty($seller_type_data)) {
-										foreach ($seller_type_data as $item) {
-											$selected = (isset($item->term_id) && ($item->term_id == $seller_type[0]->term_id)) ? 'selected' : '';
+								<select id="auditor_type" name="auditor_type" data-placeholderinput="<?php /*esc_attr_e('Search auditor type', 'taskbot'); */?>" data-placeholder="<?php /*esc_attr_e('Choose auditor type', 'taskbot'); */?>">
+									<option selected hidden disabled><?php /*esc_html_e('Auditor type', 'taskbot'); */?></option>
+									<?php /*if (is_array($auditor_type_data) && !empty($auditor_type_data)) {
+										foreach ($auditor_type_data as $item) {
+											$selected = (isset($item->term_id) && ($item->term_id == $auditor_type[0]->term_id)) ? 'selected' : '';
 											*/?>
 											<option value="<?php /*echo esc_attr($item->term_id); */?>" <?php /*echo esc_attr($selected); */?>><?php /*echo esc_html($item->name); */?></option>
 									<?php /*}
@@ -202,7 +196,6 @@ $country_class = "form-group-half";
 							<label class="form-group-title"><?php /*esc_html_e('Funding required', 'taskbot'); */?></label>
 							<input type="number" class="form-control" name="hourly_rate" placeholder="<?php /*esc_attr_e('Enter Funding required', 'taskbot'); */?>" autocomplete="off" value="<?php /*echo esc_attr($hourly_rate); */?>">
 						</div>-->
-						<?php do_action('taskbot_add_seller_profile_fields', $profile_id); ?>
 						<?php do_action('taskbot_add_auditor_profile_fields', $profile_id); ?>
 					</div>
 				</div>

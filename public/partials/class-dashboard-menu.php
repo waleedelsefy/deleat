@@ -16,7 +16,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Returns the *Singleton* instance of this class.
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function getInstance() {
@@ -298,7 +298,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 					'sortorder'	=> 0,
 					'ref'		=> 'earnings',
 					'mode'		=> '',
-                    'type'		=> 'sellers,auditors',
+                    'type'		=> '',
 
 				),
 
@@ -307,7 +307,6 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 					'class'		=> 'tb-view-profile',
 					'icon'		=> 'icon-external-link',
 					'data-attr'		=> array('target'=> '_blank'),
-					'type'		=> 'sellers', 'auditors',
 					'ref'		=> 'profile',
 					'mode'		=> 'public',
 					'sortorder'	=> 0,
@@ -446,7 +445,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Profile Menu
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_profile_menu() {
@@ -487,7 +486,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Generate Menu Link
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_custom_profile_menu_link($ref = '', $id = '', $key='', $return = true ) {
@@ -526,7 +525,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Generate Menu Link
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_profile_admin_menu_link($ref = '', $user_identity = '', $return = false, $mode = '', $id = '') {
@@ -567,7 +566,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Generate Menu Link
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_profile_menu_link($ref = '', $user_identity = '', $return = false, $mode = '', $id = '') {
@@ -609,7 +608,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Generate admin Menu Link
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_admin_profile_menu_link($ref = '', $user_identity = '', $return = false, $mode = '', $id = '') {
@@ -650,7 +649,7 @@ if (!class_exists('Taskbot_Profile_Menu')) {
 		 * Generate Profile Avatar Image Link
 		 *
 		 * @throws error
-		 * @author Amentotech <theamentotech@gmail.com>
+		 * @author Waleed Elsefy <waleedelsefy@gmail.com>
 		 * @return
 		 */
         public static function taskbot_get_avatar() {

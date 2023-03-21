@@ -3,7 +3,7 @@
  * Taskup blog Settings
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return 
  */
 $theme_version 		= wp_get_theme();

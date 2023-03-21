@@ -14,7 +14,7 @@
  * Billing deatils on checkout
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_custom_checkout_update_customer')) {
@@ -58,7 +58,7 @@ if (!function_exists('taskbot_custom_checkout_update_customer')) {
  * Get admin user
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -84,7 +84,7 @@ if (!function_exists('taskbot_get_administrator_user_id')) {
  * Order options
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WooCommerce')) {
@@ -148,7 +148,7 @@ if (class_exists('WooCommerce')) {
  * Order options
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (class_exists('WooCommerce')) {
@@ -172,7 +172,7 @@ if (class_exists('WooCommerce')) {
  * change status for offline payment gateway
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_update_order_status')) {
@@ -186,7 +186,7 @@ if (!function_exists('taskbot_update_order_status')) {
  * Complete order
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_payment_complete')) {
@@ -251,7 +251,7 @@ if (!function_exists('taskbot_payment_complete')) {
  * Update User Hiring payment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -272,7 +272,7 @@ if (!function_exists('taskbot_update_wallet_data')) {
  * Update User Hiring payment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -387,7 +387,7 @@ if (!function_exists('taskbot_update_project_data')) {
  * Update User Hiring payment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -534,7 +534,7 @@ if (!function_exists('taskbot_update_tasks_data')) {
  * Update User Hiring payment
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 
@@ -654,7 +654,7 @@ if (!function_exists('taskbot_update_packages_data')) {
  * Add meta on order item
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_woo_convert_item_session_to_order_meta')) {
@@ -777,7 +777,7 @@ if (!function_exists('taskbot_admin_order_summery')) {
  * Display order detail
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_display_order_data_success')) {
@@ -907,7 +907,7 @@ if (!function_exists('taskbot_display_order_data_success')) {
  * Display order detail
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_display_order_data')) {
@@ -997,7 +997,7 @@ if (!function_exists('taskbot_display_order_data')) {
  * Price total override
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_apply_wallet_amount')) {
@@ -1050,7 +1050,7 @@ if (!function_exists('taskbot_apply_wallet_amount')) {
  * Price override
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_apply_custom_price_to_cart_item')) {
@@ -1087,7 +1087,7 @@ if (!function_exists('taskbot_apply_custom_price_to_cart_item')) {
  * Add data in checkout
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_add_new_fields_checkout')) {
@@ -1157,7 +1157,7 @@ if (!function_exists('taskbot_add_new_fields_checkout')) {
  * Print order meta at package order detail page
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_task_custom_fields')) {
@@ -1188,7 +1188,7 @@ if (!function_exists('taskbot_task_custom_fields')) {
  * Print order meta at package order detail page
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_task_package_details')) {
@@ -1219,7 +1219,7 @@ if (!function_exists('taskbot_task_package_details')) {
  * Print task details
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_tasks_order_details')) {
@@ -1305,7 +1305,7 @@ if (!function_exists('taskbot_tasks_order_details')) {
  * Place order
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_place_order')) {
@@ -1466,7 +1466,7 @@ if (!function_exists('taskbot_place_order')) {
  * update order query var
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if ( !function_exists( 'taskbot_custom_query_var' ) ) {
@@ -1516,7 +1516,7 @@ if ( !function_exists( 'taskbot_custom_query_var' ) ) {
  * Woocommerce update price tax
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if ( !function_exists( 'taskbot_remove_tax' ) ) {
@@ -1535,7 +1535,7 @@ if ( !function_exists( 'taskbot_remove_tax' ) ) {
  * Hide order afin button after checkout
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 remove_action( 'woocommerce_order_details_after_order_table', 'woocommerce_order_again_button' );

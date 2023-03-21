@@ -5,7 +5,7 @@
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbotCheckBuyerPackage')) {
@@ -107,7 +107,7 @@ if (!function_exists('taskbotCheckBuyerPackage')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbotUpdateBuyerPackage')) {
@@ -160,7 +160,7 @@ if (!function_exists('taskbotUpdateBuyerPackage')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbotUpdateProjectStatusOption')) {
@@ -294,7 +294,7 @@ if (!function_exists('taskbotUpdateProjectStatusOption')) {
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_get_user_projects')) {

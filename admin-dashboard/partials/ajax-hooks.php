@@ -5,7 +5,7 @@
  *
  * @return
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  */
 
 if (!function_exists('taskbot_dispute_summary')) {
@@ -31,7 +31,7 @@ if (!function_exists('taskbot_dispute_summary')) {
  * Update earning
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_update_earning')) {
@@ -72,7 +72,7 @@ if (!function_exists('taskbot_update_earning')) {
  * Resolve project dispute
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_resolve_project_dispute')) {
@@ -316,7 +316,7 @@ if (!function_exists('taskbot_resolve_project_dispute')) {
  * Resolve Dispute
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_resolve_dispute')) {
@@ -574,7 +574,7 @@ if (!function_exists('taskbot_resolve_dispute')) {
  * Reject task
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_rejected_task')) {
@@ -663,7 +663,7 @@ if (!function_exists('taskbot_rejected_task')) {
  * Approved task
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_publish_task')) {
@@ -742,7 +742,7 @@ if (!function_exists('taskbot_publish_task')) {
  * Approved project
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_publish_project')) {
@@ -826,7 +826,7 @@ if (!function_exists('taskbot_publish_project')) {
  * Reject task
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_rejected_project')) {
@@ -904,7 +904,7 @@ if (!function_exists('taskbot_rejected_project')) {
  * Remove task
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 if (!function_exists('taskbot_remove_task')) {
@@ -942,7 +942,7 @@ if (!function_exists('taskbot_remove_task')) {
  * Change color
  *
  * @throws error
- * @author Amentotech <theamentotech@gmail.com>
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
  * @return
  */
 require_once(TASKBOT_DIRECTORY . '/libraries/scssphp/scss.inc.php');
