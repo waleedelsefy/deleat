@@ -17,9 +17,8 @@ $mode			= !empty($_GET['mode']) ? esc_html($_GET['mode']) : '';
 $user_identity 	= intval($current_user->ID);
 $user_type		= apply_filters('taskbot_get_user_type', $user_identity );
 $linked_profile	= taskbot_get_linked_profile_id($user_identity,'',$user_type);
-$user_name		= taskbot_get_username($linked_profile);
+$user_name		= intval($current_user->user_name);
 $profile_link	= get_the_permalink( $linked_profile );
-$switch_user    = !empty($taskbot_settings['switch_user']) ? $taskbot_settings['switch_user'] : false;
 $width			= 300;
 $height			= 300;
 $avatar	= apply_filters(
@@ -127,7 +126,7 @@ if(empty($taskbot_order_completed) ){
                                     </div>
                                 <?php } ?>
                                 <?php do_action( 'taskbot_texnomies_static_html', $linked_profile,'tb_auditor_type',esc_html__('Auditor type','taskbot') );?>
-                                <?php do_action( 'taskbot_texnomies_static_html', $linked_profile,'languages',esc_html__('Languages','taskbot') );?>
+
                                 <?php if(!empty($hide_languages ) && $hide_languages == 'no'){ do_action( 'taskbot_texnomies_static_html', $linked_profile,'tb_english_level',esc_html__('English level','taskbot') );}?>
                                 <div class="tb-profilebtnarea">
                                     <a href="<?php echo get_the_permalink($linked_profile);?>"  class="tb-btn" ><?php esc_html_e('Public profile preview','taskbot');?></a>

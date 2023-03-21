@@ -800,6 +800,120 @@ if (!function_exists('taskbot_save_buyer_settings')) {
     add_action( 'wp_ajax_taskbot_save_buyer_settings', 'taskbot_save_buyer_settings' );
 }
 /**
+ * Save auditor settings
+ *
+ * @return
+ * @throws error
+ * @author Waleed Elsefy <waleedelsefy@gmail.com>
+ */
+if (!function_exists('taskbot_save_auditor_settings')) {
+    function taskbot_save_auditor_settings()
+    {
+        global $current_user,$taskbot_settings;
+        if( function_exists('taskbot_is_demo_site') ) {
+            taskbot_is_demo_site();
+        }
+
+        if( function_exists('taskbot_verify_token') ){
+            taskbot_verify_token($_POST['security']);
+        }
+
+        if( function_exists('taskbot_authenticate_user_validation') ){
+            taskbot_authenticate_user_validation($_POST['id'],'both');
+        }
+
+        $json               = array();
+        $user_type		    = apply_filters('taskbot_get_user_type', $current_user->ID );
+        $enable_state		= !empty($taskbot_settings['enable_state']) ? $taskbot_settings['enable_state'] : false;
+        $user_id            = !empty($_POST['id']) ? intval($_POST['id']): 0;
+        $profile_id         = taskbot_get_linked_profile_id($user_id,'',$user_type);
+        $profile_data       = !empty($_POST['data']) ? $_POST['data']: array();
+        parse_str($profile_data,$profile_data);
+        $list = array(
+            'first_name'    => esc_html__('First name is required', 'taskbot'),
+            'last_name'    	=> esc_html__('Last name is required', 'taskbot'),
+            'country'   	=> esc_html__('Country is required', 'taskbot'),
+            'zipcode'    	=> esc_html__('Zip code is required', 'taskbot')
+        );
+        if(empty($taskbot_settings['enable_zipcode']) ){
+            unset($list['zipcode']);
+        }
+
+        if( !empty($enable_state) ){
+            if( !empty($enable_state) && !empty($profile_data['country']) ){
+                if (class_exists('WooCommerce')) {
+                    $countries_obj   	= new WC_Countries();
+                    $states			 	= $countries_obj->get_states( $profile_data['country'] );
+                    if( !empty($states) ){
+                        $list['state']   =  esc_html__('State field is required', 'taskbot');
+                    }
+                }
+
+            }
+
+        }
+        $json['message']        = esc_html__('Profile settings', 'taskbot');
+        foreach ($list as $meta_key => $meta_value ) {
+
+          if( empty($profile_data[$meta_key]) ){
+                $json['type'] 		    = 'error';
+                $json['message_desc'] 	= esc_html($meta_value);
+                wp_send_json( $json );
+          }
+
+        }
+
+        $first_name     = !empty( $profile_data['first_name'] ) ? sanitize_text_field( $profile_data['first_name'] ) : '';
+       	$last_name 	    = !empty( $profile_data['last_name'] ) ? sanitize_text_field( $profile_data['last_name'] ) : '';
+        $tagline        = !empty( $profile_data['tagline'] ) ? sanitize_text_field( $profile_data['tagline'] ) : '';
+        $description    = !empty( $profile_data['description'] ) ? esc_textarea( $profile_data['description'] ) : '';
+        $birthday       = !empty( $profile_data['birthday'] ) ? esc_textarea( $profile_data['birthday'] ) : '';
+        $country        = !empty( $profile_data['country'] ) ? sanitize_text_field( $profile_data['country'] ) : '';
+       	$zipcode 	    = !empty( $profile_data['zipcode'] ) ? sanitize_text_field( $profile_data['zipcode'] ) : '';
+        $state          = !empty( $profile_data['state'] ) ? sanitize_text_field( $profile_data['state'] ) : '';
+        $old_zipcode    = get_post_meta( $profile_id, 'zipcode', true );
+        $old_country    = get_post_meta( $profile_id, 'country', true );
+        $old_location   = get_post_meta( $profile_id, 'location',true );
+        if(empty($taskbot_settings['enable_zipcode']) ){
+            update_post_meta($post_id,'longitude',0);
+            update_post_meta($post_id,'latitude',0);
+        } else if(( empty($old_zipcode) || (!empty($old_zipcode) && $old_zipcode != $zipcode)) ){
+            $response   = array();
+            $response   = taskbot_process_geocode_info($zipcode,$country);
+            if( !empty($response) ) {
+                update_post_meta($profile_id,'location', $response );
+                update_post_meta($profile_id,'_longitude',$response['lng']);
+                update_post_meta($profile_id,'_latitude',$response['lat']);
+            }
+        }
+
+        $tb_post_meta             = get_post_meta( $profile_id,'tb_post_meta',true );
+        $tb_post_meta             = !empty($tb_post_meta) ? $tb_post_meta : array();
+        $full_name 		            = $first_name.' '.$last_name;
+        $post_data                = array();
+        $post_data['post_title']  = $full_name;
+        $post_data['ID']          = $profile_id;
+        wp_update_post($post_data);
+        $tb_post_meta['first_name'] = $first_name;
+        $tb_post_meta['last_name']  = $last_name;
+        $tb_post_meta['tagline']    = $tagline;
+        $tb_post_meta['description']    = $description;
+        update_user_meta( $user_id, 'first_name', $first_name );
+        update_user_meta( $user_id, 'last_name', $last_name );
+        update_post_meta( $profile_id, 'tb_post_meta', $tb_post_meta );
+        update_post_meta( $profile_id, 'country', $country );
+        update_post_meta( $profile_id, 'zipcode', $zipcode );
+        if( !empty($enable_state) ){
+            update_post_meta( $profile_id, 'state', $state );
+        }
+        $json['type']           = 'success';
+        $json['message_desc']   = esc_html__('Your profile has been updated', 'taskbot');
+        wp_send_json( $json );
+
+    }
+    add_action( 'wp_ajax_taskbot_save_auditor_settings', 'taskbot_save_auditor_settings' );
+}
+/**
  * Deactive account
  *
  * @return

@@ -2719,7 +2719,35 @@ $(function() {
 			}
 		});
 	});
-	
+
+	// update auditor settings
+	$(document).on('click', '.tb_auditor_settings', function (e) {
+		$('body').append(loader_html);
+		let _this		= $(this);
+		let id			= _this.data('id');
+		let serialized  = _this.parents('#tb_save_settings').serialize();
+		jQuery.ajax({
+			type: "POST",
+			url: scripts_vars.ajaxurl,
+			data: {
+				'action'	: 'taskbot_save_auditor_settings',
+				'security'	: scripts_vars.ajax_nonce,
+				'id'		: id,
+				'data'		: serialized,
+			},
+			dataType: "json",
+			success: function (response) {
+				jQuery('.tb-preloader-section').remove();
+				if (response.type === 'success') {
+					StickyAlert(response.message, response.message_desc, {classList: 'success', autoclose: 5000});
+					location.reload();
+				} else {
+					StickyAlert(response.message, response.message_desc, {classList: 'danger', autoclose: 5000});
+				}
+			}
+		});
+	});
+
 	// update profile privacy
 	$(document).on('click', '#tb_update_profile', function (e) {
 		let _this			= $(this);

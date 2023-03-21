@@ -14,7 +14,14 @@ $task_downloadable    =  !empty($taskbot_settings['task_downloadable']) ? $taskb
 $show_posts 	      = get_option('posts_per_page') ? get_option('posts_per_page') : 10;
 $user_identity 	    = !empty($_GET['identity']) ? intval($_GET['identity']) : intval($current_user->ID);
 $user_type		      = apply_filters('taskbot_get_user_type', $user_identity );
-$user_type_key      =  ($user_type === 'buyers') ? 'seller_id' : 'buyer_id';
+if ($user_type === 'buyers') {
+    $user_type_key = 'auditor_id';
+} elseif ($user_type === 'auditors') {
+    $user_type_key = 'buyer_id';
+} else {
+    $user_type_key = 'buyer_id';
+}
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 if (!class_exists('WooCommerce')) {
@@ -35,24 +42,30 @@ $taskbot_args = array(
   'orderby'         => $sorting,
   'order'           => $order,
 );
-
-if($user_type === 'buyers'){
-  $meta_query_args[] = array(
-    'key' 		      => 'buyer_id',
-    'value' 	      => $user_identity,
-    'compare' 	    => '='
-  );
-} else{
-  $meta_query_args[] = array(
-    'key' 		      => 'seller_id',
-    'value' 	      => $user_identity,
-    'compare' 	    => '='
-  );
+if ($user_type === 'buyers') {
+    $meta_query_args[] = array(
+        'key' 		=> 'buyer_id',
+        'value' 	=> $user_identity,
+        'compare' 	=> '='
+    );
+} elseif ($user_type === 'auditors') {
+    $meta_query_args[] = array(
+        'key' 		=> 'auditor_id',
+        'value' 	=> $user_identity,
+        'compare' 	=> '='
+    );
+} else {
+    $meta_query_args[] = array(
+        'key' 		=> 'seller_id',
+        'value' 	=> $user_identity,
+        'compare' 	=> '='
+    );
 }
+
 $meta_query_args[] = array(
   'key' 		     => 'payment_type',
-  'value' 	     => 'tasks',
-  'compare' 	   => '='
+  'value' 	         => 'tasks',
+  'compare' 	    => '='
 );
 
 $meta_query_args[] = array(
@@ -97,12 +110,15 @@ if( $tasks_result->have_posts() ){
         $product_data   = get_post_meta( $order_id, 'cus_woo_product_data', true);
         $product_data   = !empty($product_data) ? $product_data : array();
         $task_type      = get_post_meta( $order_id, '_task_type', true);
-        
-        if( !empty($user_type) && ($user_type === 'sellers') ) {
-          $order_price    = get_post_meta( $order_id, 'seller_shares', true);
-          $order_price    = !empty($order_price) ? ($order_price) : 0;
+
+        if (!empty($user_type) && ($user_type === 'sellers')) {
+            $order_price = get_post_meta($order_id, 'seller_shares', true);
+            $order_price = !empty($order_price) ? $order_price : 0;
+        } elseif (!empty($user_type) && ($user_type === 'auditors')) {
+            $order_price = get_post_meta($order_id, 'auditor_shares', true);
+            $order_price = !empty($order_price) ? $order_price : 0;
         }
-        
+
         $downloadable   = get_post_meta( $task_id, '_downloadable', true);
         $downloadable   = !empty($downloadable) ? ucfirst($downloadable) : 0;
        

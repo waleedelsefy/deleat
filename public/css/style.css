@@ -4915,7 +4915,9 @@ form p span i {
 .tk-header, .tb-header {
   position: relative;
   z-index: 99;
-  height: 125px;
+  padding: 0;
+  height: 0;
+  visibility: hidden;
 }
 .tk-header .tb-username, .tb-header .tb-username {
   display: none;

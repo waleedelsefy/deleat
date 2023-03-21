@@ -117,6 +117,7 @@ if( !empty($plans) ){
 
 		<?php if( !empty($plans_count) && $plans_count>1){ ?>   
 			</ul>
+			</ul>
 		<?php } ?>
 		
 		<div class="tab-content" id="tb_tasktakscontents">

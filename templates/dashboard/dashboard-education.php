@@ -26,69 +26,6 @@ $tb_post_meta   = !empty($tb_post_meta) ? $tb_post_meta : array();
 $educations     	= !empty($tb_post_meta['education']) ? $tb_post_meta['education'] : array();
 $education_array	= array();
 ?>
-<!--<div class="tb-dhb-profile-settings tb-education-wrapper">
-	<div class="tb-tabtasktitle">
-		<h5><?php /*esc_html_e('Educational details','taskbot');*/?></h5>
-		<div class="tb-profileform__title--rightarea">
-			<a href="javascript:void(0);" data-type="add" class="tb_show_education"><?php /*esc_html_e('Add new','taskbot');*/?></a>
-		</div>
-	</div>
-	<div class="tb-dhb-box-wrapper">
-		<div class="tb-themeform tb-profileform">
-			<fieldset>
-				<div class="tb-profileform__holder">
-					<?php /*if( !empty($educations) ){*/?>
-						<ul class="tb-detail tb-educationdetail">
-							<?php /*
-							foreach($educations as $key => $value ){
-								$degree_title	= !empty($value['title']) ? $value['title'] : '';
-								$institute		= !empty($value['institute']) ? $value['institute'] : '';
-								$startdate 		= !empty( $value['start_date'] ) ? $value['start_date'] : '';
-								$enddate 		= !empty( $value['end_date'] ) ? $value['end_date'] : '';
-								$description 	= !empty( $value['description'] ) ? wp_kses_post( stripslashes( $value['description'] ) ) : '';
-								$start_date 	= !empty( $startdate ) ? date_i18n($date_format, strtotime(apply_filters('taskbot_date_format_fix',$startdate ))) : '';
-								$end_date 		= !empty( $enddate ) ? date_i18n($date_format, strtotime(apply_filters('taskbot_date_format_fix',$enddate ))) : '';
-								
-								if( empty( $end_date ) ){
-									$end_date = '';
-								} else {
-									$end_date	= ' - '.$end_date;
-								}
-
-								if( !empty( $start_date ) ){
-									$period = $start_date.$end_date;
-								}
-
-								if( !empty($period) ){
-									$institute	= $institute.' - '.$period;
-								}
-
-								$education_array[$key]	= $value;
-								*/?>
-								<li>
-									<div class="tb-detail__content">
-										<div class="tb-detail__title">
-											<?php /*if( !empty($institute) ){*/?>
-												<span><?php /*echo esc_html($institute);*/?></span>
-											<?php /*} */?>
-											<?php /*if( !empty($degree_title) ){ */?>
-												<h6><a href="javascript:void(0);"><?php /*echo esc_html($degree_title);*/?></a></h6>
-											<?php /*} */?>
-										</div>
-										<div class="tb-detail__icon">
-											<a href="javascript:void(0);" data-id="<?php /*echo intval($user_identity);*/?>" data-type="edit" data-key="<?php /*echo intval($key);*/?>" class="tb-edit tb_show_education"><i class="icon-edit-2"></i></a>
-											<a href="javascript:void(0);" data-id="<?php /*echo intval($user_identity);*/?>" data-key="<?php /*echo intval($key);*/?>" class="tb-delete tb_remove_edu"><i class="icon-trash-2"></i></a>
-										</div>
-									</div>
-								</li>
-							<?php /*} */?>
-						</ul>
-					<?php /*} */?>
-				</div>
-			</fieldset>
-		</div>
-	</div>
-</div>-->
 <script>
 	var profile_education = [];
 	window.profile_education	= <?php echo json_encode($education_array); ?>
